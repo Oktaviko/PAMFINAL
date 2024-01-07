@@ -33,7 +33,12 @@ private fun ItemDetailsBody(
     onDelete: () -> Unit,
     modifier: Modifier = Modifier
 ){
+    Column(
+        modifier = modifier.padding(12.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp)
+    ){
 
+    }
 }
 @Composable
 fun ItemDetailsPendaftar(
