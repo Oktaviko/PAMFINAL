@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.pamfinal.AddEvent
 import com.example.pamfinal.AddUIState
 import com.example.pamfinal.navigation.DestinasiNavigasi
@@ -21,6 +22,12 @@ import com.example.pamfinal.navigation.DestinasiNavigasi
 object DestinasiEntry : DestinasiNavigasi {
     override val route = "item_entry"
     override val titleRes = "Entry Customer"
+}
+@Composable
+fun AddScreen(
+
+){
+
 }
 
 @Composable
