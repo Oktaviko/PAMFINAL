@@ -29,7 +29,7 @@ import com.example.pamfinal.ui.BPJSTopAppBar
 import kotlinx.coroutines.launch
 
 object DestinasiEntry : DestinasiNavigasi {
-    override val route = "item_entry"
+    override val route = "item_entry_pendaftar"
     override val titleRes = "Entry Customer"
 }
 @OptIn(ExperimentalMaterial3Api::class)
