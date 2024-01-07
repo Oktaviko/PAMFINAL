@@ -4,7 +4,9 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -24,6 +26,7 @@ import com.example.pamfinal.ui.AddUIState
 import com.example.pamfinal.ui.PenyediaViewModel
 import com.example.pamfinal.navigation.DestinasiNavigasi
 import com.example.pamfinal.ui.BPJSTopAppBar
+import kotlinx.coroutines.launch
 
 object DestinasiEntry : DestinasiNavigasi {
     override val route = "item_entry"
@@ -48,8 +51,22 @@ fun AddScreen(
                 navigateUp = navigateBack
             )
         }
-    ){
+    ){innerPadding ->
 
+        EntryBody(
+            addUIState = addViewModel.addUIState,
+            onCustomerValueChange = addViewModel::updateAddUIState,
+            onSaveClick = {
+                coroutineScope.launch {
+                    addViewModel.addPendaftar()
+                    navigateBack()
+                }
+            },
+            modifier = Modifier
+                .padding(innerPadding)
+                .verticalScroll(rememberScrollState())
+                .fillMaxWidth()
+        )
     }
 
 }
