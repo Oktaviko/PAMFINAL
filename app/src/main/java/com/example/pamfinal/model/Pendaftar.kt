@@ -5,7 +5,7 @@ data class Pendaftar(
     val nama: String,
     val alamat: String,
     val telepon: String,
-    val jenis_kelamin: String
+    val tanggal_lahir: String
 ){
     constructor(): this("","","","","")
 }
