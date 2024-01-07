@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.pamfinal.AddEvent
 import com.example.pamfinal.AddUIState
+import com.example.pamfinal.PenyediaViewModel
 import com.example.pamfinal.navigation.DestinasiNavigasi
 
 object DestinasiEntry : DestinasiNavigasi {
@@ -25,7 +26,9 @@ object DestinasiEntry : DestinasiNavigasi {
 }
 @Composable
 fun AddScreen(
-
+    navigateBack: () -> Unit,
+    modifier: Modifier = Modifier,
+    addViewModel: AddViewModel = viewModel(factory = PenyediaViewModel.Factory),
 ){
 
 }
