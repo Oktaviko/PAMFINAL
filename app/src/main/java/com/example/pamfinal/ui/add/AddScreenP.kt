@@ -32,7 +32,11 @@ fun EntryBody(
         verticalArrangement = Arrangement.spacedBy(15.dp),
         modifier = modifier.padding(15.dp)
     ){
-
+        FormInput(
+            addEvent = addUIState.addEvent,
+            onValueChange = onCustomerValueChange,
+            modifier = Modifier.fillMaxWidth()
+        )
     }
 }
 @OptIn(ExperimentalMaterial3Api::class)
