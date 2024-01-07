@@ -12,11 +12,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.example.pamfinal.AddEvent
+import com.example.pamfinal.AddUIState
 import com.example.pamfinal.navigation.DestinasiNavigasi
 
 object DestinasiEntry : DestinasiNavigasi {
     override val route = "item_entry"
     override val titleRes = "Entry Customer"
+}
+
+@Composable
+fun EntryBody(
+    addUIState: AddUIState,
+    onCustomerValueChange: (AddEvent) -> Unit,
+    onSaveClick: () -> Unit,
+    modifier: Modifier = Modifier
+){
+
 }
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
