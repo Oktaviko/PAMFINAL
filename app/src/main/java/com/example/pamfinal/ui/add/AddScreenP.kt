@@ -1,7 +1,10 @@
 package com.example.pamfinal.ui.add
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.example.pamfinal.AddEvent
 import com.example.pamfinal.navigation.DestinasiNavigasi
 
@@ -16,5 +19,10 @@ fun FormInput(
     onValueChange: (AddEvent) -> Unit = {},
     enabled: Boolean = true
 ){
+    Column(
+        modifier = modifier,
+        verticalArrangement = Arrangement.spacedBy(15.dp)
+    ){
 
+    }
 }
