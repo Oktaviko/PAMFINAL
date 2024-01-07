@@ -13,12 +13,17 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.pamfinal.model.Pendaftar
 import com.example.pamfinal.navigation.DestinasiNavigasi
 import com.example.pamfinal.ui.DetailUIState
+import com.example.pamfinal.ui.toPendaftar
 
 object DetailDestination : DestinasiNavigasi {
     override val route = "item_details_pendaftar"
@@ -37,6 +42,12 @@ private fun ItemDetailsBody(
         modifier = modifier.padding(12.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ){
+        var deleteConfirmationRequired by rememberSaveable { mutableStateOf(false) }
+
+        ItemDetailsPendaftar(
+            pendaftar = detailUIState.addEvent.toPendaftar(),
+            modifier = Modifier.fillMaxWidth()
+        )
 
     }
 }
