@@ -21,9 +21,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.pamfinal.model.Pendaftar
 import com.example.pamfinal.navigation.DestinasiNavigasi
 import com.example.pamfinal.ui.DetailUIState
+import com.example.pamfinal.ui.PenyediaViewModel
 import com.example.pamfinal.ui.toPendaftar
 
 object DetailDestination : DestinasiNavigasi {
@@ -33,6 +35,15 @@ object DetailDestination : DestinasiNavigasi {
     val routeWithArgs = "$route/{$pendaftarId}"
 }
 
+@Composable
+fun DetailScreenPendaftar(
+    navigateToEditItem: (String) -> Unit,
+    navigateBack: () -> Unit,
+    modifier: Modifier = Modifier,
+    viewModel: DetailViewModel = viewModel(factory = PenyediaViewModel.Factory)
+){
+
+}
 @Composable
 private fun ItemDetailsBody(
     detailUIState: DetailUIState,
