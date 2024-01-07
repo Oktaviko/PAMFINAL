@@ -56,6 +56,17 @@ private fun ItemDetailsBody(
         ) {
             Text("Delete")
         }
+        if (deleteConfirmationRequired){
+            DeleteConfirmationDialog(
+                onDeleteConfirm = {
+                    deleteConfirmationRequired = false
+                    onDelete()
+                },
+                onDeleteCancel = {
+                    deleteConfirmationRequired = false },
+                    modifier = Modifier.padding(12.dp)
+                )
+        }
 
     }
 }
