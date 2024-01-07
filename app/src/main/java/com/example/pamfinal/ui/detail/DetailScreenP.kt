@@ -14,6 +14,14 @@ object DetailDestination : DestinasiNavigasi {
     val routeWithArgs = "$route/{$pendaftarId}"
 }
 @Composable
+private fun ItemDetailsRow(
+    labelResID: String,
+    itemDetail: String,
+    modifier: Modifier = Modifier
+){
+
+}
+@Composable
 private fun DeleteConfirmationDialog(
     onDeleteConfirm: () -> Unit,
     onDeleteCancel: () -> Unit,
