@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "824077734470",
+    "project_id": "pamfinal-2a2b6",
+    "storage_bucket": "pamfinal-2a2b6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:824077734470:android:a6f83e2e6f235b4233b047",
+        "android_client_info": {
+          "package_name": "com.example.pamfinal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLwqkidOzpRtkpdk6moOxOmgDlTGsCMMA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
