@@ -9,18 +9,21 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.pamfinal.AddEvent
-import com.example.pamfinal.AddUIState
-import com.example.pamfinal.PenyediaViewModel
+import com.example.pamfinal.ui.AddEvent
+import com.example.pamfinal.ui.AddUIState
+import com.example.pamfinal.ui.PenyediaViewModel
 import com.example.pamfinal.navigation.DestinasiNavigasi
+import com.example.pamfinal.ui.BPJSTopAppBar
 
 object DestinasiEntry : DestinasiNavigasi {
     override val route = "item_entry"
@@ -36,6 +39,18 @@ fun AddScreen(
     val coroutineScope = rememberCoroutineScope()
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
 
+    Scaffold(
+        modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+        topBar = {
+            BPJSTopAppBar(title = DestinasiEntry.titleRes,
+                canNavigateBack = true,
+                scrollBehavior = scrollBehavior,
+                navigateUp = navigateBack
+            )
+        }
+    ){
+
+    }
 
 }
 
