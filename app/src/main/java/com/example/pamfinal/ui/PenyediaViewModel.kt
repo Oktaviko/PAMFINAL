@@ -8,6 +8,7 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.pamfinal.BPJSApplication
 import com.example.pamfinal.ui.add.AddViewModel
 import com.example.pamfinal.ui.detail.DetailViewModel
+import com.example.pamfinal.ui.edit.EditViewModel
 
 fun CreationExtras.aplikasiBPJS(): BPJSApplication =
     (this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as BPJSApplication)
@@ -19,6 +20,12 @@ object PenyediaViewModel {
         }
         initializer {
             DetailViewModel(
+                createSavedStateHandle(),
+                aplikasiBPJS().container.pendaftarRepository
+            )
+        }
+        initializer {
+            EditViewModel(
                 createSavedStateHandle(),
                 aplikasiBPJS().container.pendaftarRepository
             )
