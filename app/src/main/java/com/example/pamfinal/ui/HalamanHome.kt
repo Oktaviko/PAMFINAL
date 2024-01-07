@@ -1,4 +1,4 @@
-package com.example.pamfinal
+package com.example.pamfinal.ui
 
 
 import androidx.compose.foundation.layout.Arrangement

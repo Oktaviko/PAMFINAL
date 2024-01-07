@@ -1,4 +1,4 @@
-package com.example.pamfinal
+package com.example.pamfinal.ui
 
 import com.example.pamfinal.model.Pendaftar
 
