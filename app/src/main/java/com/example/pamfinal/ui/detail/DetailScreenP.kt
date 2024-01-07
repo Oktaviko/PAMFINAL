@@ -1,5 +1,7 @@
 package com.example.pamfinal.ui.detail
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -36,7 +38,48 @@ fun ItemDetailsPendaftar(
             contentColor = MaterialTheme.colorScheme.onPrimaryContainer
         )
     ){
-
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(15.dp),
+            verticalArrangement = Arrangement.spacedBy(15.dp)
+        ){
+            ItemDetailsRow(
+                labelResID = "Nama",
+                itemDetail = pendaftar.nama,
+                modifier = Modifier.padding(
+                    horizontal = 15.dp
+                )
+            )
+            ItemDetailsRow(
+                labelResID = "NIK",
+                itemDetail = pendaftar.nik,
+                modifier = Modifier.padding(
+                    horizontal = 15.dp
+                )
+            )
+            ItemDetailsRow(
+                labelResID = "Alamat",
+                itemDetail = pendaftar.alamat,
+                modifier = Modifier.padding(
+                    horizontal = 15.dp
+                )
+            )
+            ItemDetailsRow(
+                labelResID = "TTL",
+                itemDetail = pendaftar.tanggal_lahir,
+                modifier = Modifier.padding(
+                    horizontal = 15.dp
+                )
+            )
+            ItemDetailsRow(
+                labelResID = "No Telepon",
+                itemDetail = pendaftar.telepon,
+                modifier = Modifier.padding(
+                    horizontal = 15.dp
+                )
+            )
+        }
     }
 }
 @Composable
