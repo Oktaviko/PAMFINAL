@@ -10,7 +10,9 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
@@ -24,12 +26,16 @@ object DestinasiEntry : DestinasiNavigasi {
     override val route = "item_entry"
     override val titleRes = "Entry Customer"
 }
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddScreen(
     navigateBack: () -> Unit,
     modifier: Modifier = Modifier,
     addViewModel: AddViewModel = viewModel(factory = PenyediaViewModel.Factory),
 ){
+    val coroutineScope = rememberCoroutineScope()
+    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
+
 
 }
 
