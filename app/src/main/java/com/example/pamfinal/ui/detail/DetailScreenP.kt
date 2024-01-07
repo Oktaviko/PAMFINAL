@@ -18,6 +18,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.pamfinal.model.Pendaftar
 import com.example.pamfinal.navigation.DestinasiNavigasi
+import com.example.pamfinal.ui.DetailUIState
 
 object DetailDestination : DestinasiNavigasi {
     override val route = "item_details_pendaftar"
@@ -26,6 +27,14 @@ object DetailDestination : DestinasiNavigasi {
     val routeWithArgs = "$route/{$pendaftarId}"
 }
 
+@Composable
+private fun ItemDetailsBody(
+    detailUIState: DetailUIState,
+    onDelete: () -> Unit,
+    modifier: Modifier = Modifier
+){
+
+}
 @Composable
 fun ItemDetailsPendaftar(
     pendaftar: Pendaftar,
