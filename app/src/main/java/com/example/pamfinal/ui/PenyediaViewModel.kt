@@ -6,7 +6,7 @@ import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.pamfinal.BPJSApplication
-import com.example.pamfinal.ui.add.AddViewModel
+import com.example.pamfinal.ui.add.AddViewModelPendaftar
 import com.example.pamfinal.ui.detail.DetailViewModel
 import com.example.pamfinal.ui.edit.EditViewModel
 
@@ -16,7 +16,7 @@ fun CreationExtras.aplikasiBPJS(): BPJSApplication =
 object PenyediaViewModel {
     val Factory = viewModelFactory {
         initializer {
-            AddViewModel(aplikasiBPJS().container.pendaftarRepository)
+            AddViewModelPendaftar(aplikasiBPJS().container.pendaftarRepository)
         }
         initializer {
             DetailViewModel(

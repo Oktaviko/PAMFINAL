@@ -6,10 +6,8 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.example.pamfinal.data.PendaftarRepository
 import com.example.pamfinal.data.Rumah_SakitRepository
-import com.example.pamfinal.ui.AddEvent
 import com.example.pamfinal.ui.AddEventPendaftar
 import com.example.pamfinal.ui.AddEventRS
-import com.example.pamfinal.ui.AddUIState
 import com.example.pamfinal.ui.AddUIStatePendaftar
 import com.example.pamfinal.ui.AddUIStateRS
 import com.example.pamfinal.ui.toPendaftar

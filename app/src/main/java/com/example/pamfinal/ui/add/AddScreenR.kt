@@ -24,20 +24,22 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.pamfinal.ui.PenyediaViewModel
 import com.example.pamfinal.navigation.DestinasiNavigasi
 import com.example.pamfinal.ui.AddEventPendaftar
+import com.example.pamfinal.ui.AddEventRS
 import com.example.pamfinal.ui.AddUIStatePendaftar
+import com.example.pamfinal.ui.AddUIStateRS
 import com.example.pamfinal.ui.BPJSTopAppBar
 import kotlinx.coroutines.launch
 
-object DestinasiEntryP : DestinasiNavigasi {
-    override val route = "item_entry_pendaftar"
-    override val titleRes = "Entry Pendaftar"
+object DestinasiEntryR : DestinasiNavigasi {
+    override val route = "item_entry_rs"
+    override val titleRes = "Entry Rumah Sakit"
 }
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddScreenPendaftar(
+fun AddScreenRumahSakit(
     navigateBack: () -> Unit,
     modifier: Modifier = Modifier,
-    addViewModel: AddViewModelPendaftar = viewModel(factory = PenyediaViewModel.Factory),
+    addViewModel: AddViewModelRS = viewModel(factory = PenyediaViewModel.Factory),
 ){
     val coroutineScope = rememberCoroutineScope()
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
@@ -45,7 +47,7 @@ fun AddScreenPendaftar(
     Scaffold(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
-            BPJSTopAppBar(title = DestinasiEntryP.titleRes,
+            BPJSTopAppBar(title = DestinasiEntryR.titleRes,
                 canNavigateBack = true,
                 scrollBehavior = scrollBehavior,
                 navigateUp = navigateBack
@@ -53,12 +55,12 @@ fun AddScreenPendaftar(
         }
     ){innerPadding ->
 
-        EntryBodyP(
-            addUIState = addViewModel.addUIStatePendftar,
-            onCustomerValueChange = addViewModel::updateAddUIState,
+        EntryBodyR(
+            addUIState = addViewModel.addUIStateRS,
+            onRSValueChange = addViewModel::updateAddUIState,
             onSaveClick = {
                 coroutineScope.launch {
-                    addViewModel.addPendaftar()
+                    addViewModel.addRS()
                     navigateBack()
                 }
             },
@@ -72,9 +74,9 @@ fun AddScreenPendaftar(
 }
 
 @Composable
-fun EntryBodyP(
-    addUIState: AddUIStatePendaftar,
-    onCustomerValueChange: (AddEventPendaftar) -> Unit,
+fun EntryBodyR(
+    addUIState: AddUIStateRS,
+    onRSValueChange: (AddEventRS) -> Unit,
     onSaveClick: () -> Unit,
     modifier: Modifier = Modifier
 ){
@@ -82,25 +84,25 @@ fun EntryBodyP(
         verticalArrangement = Arrangement.spacedBy(15.dp),
         modifier = modifier.padding(15.dp)
     ){
-        FormInputP(
+        FormInputR(
             addEvent = addUIState.addEvent,
-            onValueChange = onCustomerValueChange,
+            onValueChange = onRSValueChange,
             modifier = Modifier.fillMaxWidth()
         )
         Button(onClick = onSaveClick,
             shape = MaterialTheme.shapes.small,
             modifier = Modifier.fillMaxWidth()
         ) {
-           Text("Submit")
+            Text("Submit")
         }
     }
 }
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FormInputP(
-    addEvent: AddEventPendaftar,
+fun FormInputR(
+    addEvent: AddEventRS,
     modifier: Modifier = Modifier,
-    onValueChange: (AddEventPendaftar) -> Unit = {},
+    onValueChange: (AddEventRS) -> Unit = {},
     enabled: Boolean = true
 ){
     Column(
@@ -108,42 +110,25 @@ fun FormInputP(
         verticalArrangement = Arrangement.spacedBy(15.dp)
     ){
         OutlinedTextField(
-            value = addEvent.nama,
-            onValueChange = {onValueChange(addEvent.copy(nama = it))},
-            label ={Text("Nama")},
+            value = addEvent.nama_rs,
+            onValueChange = {onValueChange(addEvent.copy(nama_rs = it))},
+            label ={Text("Nama Rumah Sakit")},
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
             singleLine = true
         )
         OutlinedTextField(
-            value = addEvent.nik,
-            onValueChange = {onValueChange(addEvent.copy(nik = it))},
-            label ={Text("NIK")},
+            value = addEvent.id_rs,
+            onValueChange = {onValueChange(addEvent.copy(id_rs = it))},
+            label ={Text("id rs")},
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
             singleLine = true
         )
         OutlinedTextField(
-            value = addEvent.alamat,
-            onValueChange = {onValueChange(addEvent.copy(alamat = it))},
-            label ={Text("Alamat")},
-            modifier = Modifier.fillMaxWidth(),
-            enabled = enabled,
-            singleLine = true
-        )
-        OutlinedTextField(
-            value = addEvent.tanggal_lahir,
-            onValueChange = {onValueChange(addEvent.copy(tanggal_lahir = it))},
-            label ={Text("Tanggal Lahir")},
-            modifier = Modifier.fillMaxWidth(),
-            enabled = enabled,
-            singleLine = true
-        )
-        OutlinedTextField(
-            value = addEvent.telepon,
-            onValueChange = {onValueChange(addEvent.copy(telepon = it))},
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-            label ={Text("Telepon")},
+            value = addEvent.alamat_rs,
+            onValueChange = {onValueChange(addEvent.copy(alamat_rs = it))},
+            label ={Text("Alamat Rumah Sakit")},
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
             singleLine = true

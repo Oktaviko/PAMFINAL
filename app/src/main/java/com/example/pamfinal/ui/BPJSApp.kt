@@ -20,7 +20,6 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BPJSApp(
-
 ){
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
 

@@ -9,7 +9,7 @@ data class Pendaftar(
 ){
     constructor(): this("","","","","")
 }
-data class Rumah_Sakit(
+data class RumahSakit(
     val id_rs: String,
     val nama_rs: String,
     val alamat_rs: String
