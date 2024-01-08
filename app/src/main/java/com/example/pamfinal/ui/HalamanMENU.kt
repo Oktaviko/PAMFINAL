@@ -16,8 +16,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.pamfinal.navigation.DestinasiNavigasi
 
-
+object DestinasiUtama : DestinasiNavigasi {
+    override val route = "menu"
+    override val titleRes = "MENU"
+}
 @Composable
 fun HalamanUtama(
 

@@ -4,7 +4,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 interface UserContainer {
     val pendaftarRepository: PendaftarRepository
-    val rsRepository : Rumah_SakitRepository
+    val rsRepository : RumahSakitRepository
 }
 
 class PendaftarContainer : UserContainer{
@@ -14,8 +14,8 @@ class PendaftarContainer : UserContainer{
     override val pendaftarRepository: PendaftarRepository by lazy {
         PendaftarRepositoryImpl(firestore)
     }
-    override val rsRepository: Rumah_SakitRepository by lazy {
-        Rumah_SakitRepositoryImpl(firestore)
+    override val rsRepository: RumahSakitRepository by lazy {
+        RumahSakitRepositoryImpl(firestore)
     }
 
 }

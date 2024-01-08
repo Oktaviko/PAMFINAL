@@ -1,7 +1,6 @@
 package com.example.pamfinal
 
 import android.app.Application
-import com.example.pamfinal.data.AppContainer
 import com.example.pamfinal.data.PendaftarContainer
 import com.example.pamfinal.data.UserContainer
 
