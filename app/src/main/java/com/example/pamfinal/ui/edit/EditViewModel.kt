@@ -7,8 +7,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pamfinal.data.PendaftarRepository
-import com.example.pamfinal.ui.AddEvent
-import com.example.pamfinal.ui.AddUIState
+import com.example.pamfinal.ui.AddEventPendaftar
+import com.example.pamfinal.ui.AddUIStatePendaftar
 import com.example.pamfinal.ui.toPendaftar
 import com.example.pamfinal.ui.toUIStatePendaftar
 import kotlinx.coroutines.flow.filterNotNull
@@ -20,7 +20,7 @@ class EditViewModel (
     private val repository: PendaftarRepository
 ) : ViewModel(){
 
-    var pendaftarUiState by mutableStateOf(AddUIState())
+    var pendaftarUiState by mutableStateOf(AddUIStatePendaftar())
         private set
 
     private val pendaftarId: String = checkNotNull(savedStateHandle[EditDestination.pendaftarId])
@@ -35,7 +35,7 @@ class EditViewModel (
         }
     }
 
-    fun updateUIState(addEvent: AddEvent){
+    fun updateUIState(addEvent: AddEventPendaftar){
         pendaftarUiState = pendaftarUiState.copy(addEvent = addEvent)
     }
 

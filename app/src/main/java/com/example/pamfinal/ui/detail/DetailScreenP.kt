@@ -35,7 +35,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.pamfinal.model.Pendaftar
 import com.example.pamfinal.navigation.DestinasiNavigasi
 import com.example.pamfinal.ui.BPJSTopAppBar
-import com.example.pamfinal.ui.DetailUIState
+import com.example.pamfinal.ui.DetailUIStatePendaftar
 import com.example.pamfinal.ui.PenyediaViewModel
 import com.example.pamfinal.ui.toPendaftar
 import kotlinx.coroutines.launch
@@ -53,7 +53,7 @@ fun DetailScreenPendaftar(
     navigateToEditItem: (String) -> Unit,
     navigateBack: () -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: DetailViewModel = viewModel(factory = PenyediaViewModel.Factory)
+    viewModel: DetailViewModelPendaftar = viewModel(factory = PenyediaViewModel.Factory)
 ){
     val uiState = viewModel.uiState.collectAsState()
     val coroutineScope = rememberCoroutineScope()
@@ -94,7 +94,7 @@ fun DetailScreenPendaftar(
 }
 @Composable
 private fun ItemDetailsBody(
-    detailUIState: DetailUIState,
+    detailUIState: DetailUIStatePendaftar,
     onDelete: () -> Unit,
     modifier: Modifier = Modifier
 ){

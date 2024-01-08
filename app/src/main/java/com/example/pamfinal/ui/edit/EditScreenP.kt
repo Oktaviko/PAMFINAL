@@ -13,7 +13,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.pamfinal.navigation.DestinasiNavigasi
 import com.example.pamfinal.ui.BPJSTopAppBar
 import com.example.pamfinal.ui.PenyediaViewModel
-import com.example.pamfinal.ui.add.EntryBody
+import com.example.pamfinal.ui.add.EntryBodyP
+import com.example.pamfinal.ui.add.EntryBodyR
 import kotlinx.coroutines.launch
 
 object EditDestination : DestinasiNavigasi{
@@ -42,7 +43,7 @@ fun EditScreenPendaftar(
         },
         modifier = modifier
     ){innerPadding ->
-        EntryBody(
+        EntryBodyP(
             addUIState = viewModel.pendaftarUiState,
             onCustomerValueChange = viewModel::updateUIState,
             onSaveClick = {

@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.example.pamfinal.data.PendaftarRepository
-import com.example.pamfinal.data.Rumah_SakitRepository
+import com.example.pamfinal.data.RumahSakitRepository
 import com.example.pamfinal.ui.AddEventPendaftar
 import com.example.pamfinal.ui.AddEventRS
 import com.example.pamfinal.ui.AddUIStatePendaftar
@@ -25,7 +25,7 @@ class AddViewModelPendaftar(private val pendaftarRepository: PendaftarRepository
         pendaftarRepository.save(addUIStatePendftar.addEvent.toPendaftar())
     }
 }
-class AddViewModelRS(private val rumahSakitrepository: Rumah_SakitRepository) : ViewModel(){
+class AddViewModelRS(private val rumahSakitrepository: RumahSakitRepository) : ViewModel(){
 
     var addUIStateRS by mutableStateOf(AddUIStateRS())
         private set
