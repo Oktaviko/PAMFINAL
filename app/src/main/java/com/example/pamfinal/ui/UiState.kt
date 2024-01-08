@@ -5,10 +5,10 @@ import com.example.pamfinal.model.RumahSakit
 
 
 data class AddUIStatePendaftar(
-    val addEvent: AddEventPendaftar = AddEventPendaftar(),
+    val addEventPendaftar: AddEventPendaftar = AddEventPendaftar(),
 )
 data class AddUIStateRS(
-    val addEvent: AddEventRS = AddEventRS(),
+    val addEventRS: AddEventRS = AddEventRS(),
 )
 
 data class AddEventPendaftar(
@@ -38,10 +38,10 @@ fun AddEventRS.toRS() = RumahSakit(
     alamat_rs = alamat_rs,
 )
 data class DetailUIStatePendaftar(
-    val addEvent: AddEventPendaftar = AddEventPendaftar(),
+    val addEventPendaftar: AddEventPendaftar = AddEventPendaftar(),
 )
 data class DetailUIStateRS(
-    val addEvent: AddEventRS = AddEventRS(),
+    val addEventRS: AddEventRS = AddEventRS(),
 )
 fun Pendaftar.toDetailPendaftar(): AddEventPendaftar =
     AddEventPendaftar(
@@ -58,10 +58,10 @@ fun RumahSakit.toDetailRS(): AddEventRS =
         alamat_rs = alamat_rs,
     )
 fun Pendaftar.toUIStatePendaftar(): AddUIStatePendaftar = AddUIStatePendaftar(
-    addEvent = this.toDetailPendaftar()
+    addEventPendaftar = this.toDetailPendaftar()
 )
 fun RumahSakit.toUIStateRS(): AddUIStateRS = AddUIStateRS(
-    addEvent = this.toDetailRS()
+    addEventRS = this.toDetailRS()
 )
 
 data class HomeUIStatePendaftar(
