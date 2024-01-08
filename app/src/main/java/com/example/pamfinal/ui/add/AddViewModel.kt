@@ -5,19 +5,38 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.example.pamfinal.data.PendaftarRepository
+import com.example.pamfinal.data.Rumah_SakitRepository
 import com.example.pamfinal.ui.AddEvent
+import com.example.pamfinal.ui.AddEventPendaftar
+import com.example.pamfinal.ui.AddEventRS
 import com.example.pamfinal.ui.AddUIState
+import com.example.pamfinal.ui.AddUIStatePendaftar
+import com.example.pamfinal.ui.AddUIStateRS
 import com.example.pamfinal.ui.toPendaftar
+import com.example.pamfinal.ui.toRS
 
-class AddViewModel(private val pendaftarRepository: PendaftarRepository) : ViewModel(){
-    var addUIState by mutableStateOf(AddUIState())
+class AddViewModelPendaftar(private val pendaftarRepository: PendaftarRepository) : ViewModel(){
+    var addUIStatePendftar by mutableStateOf(AddUIStatePendaftar())
         private set
 
-    fun updateAddUIState(addEvent: AddEvent){
-        addUIState = AddUIState(addEvent = addEvent)
+    fun updateAddUIState(addEvent: AddEventPendaftar){
+        addUIStatePendftar = AddUIStatePendaftar(addEvent = addEvent)
     }
 
     suspend fun addPendaftar(){
-        pendaftarRepository.save(addUIState.addEvent.toPendaftar())
+        pendaftarRepository.save(addUIStatePendftar.addEvent.toPendaftar())
+    }
+}
+class AddViewModelRS(private val rumahSakitrepository: Rumah_SakitRepository) : ViewModel(){
+
+    var addUIStateRS by mutableStateOf(AddUIStateRS())
+        private set
+
+    fun updateAddUIState(addEvent: AddEventRS){
+        addUIStateRS = AddUIStateRS(addEvent = addEvent)
+    }
+
+    suspend fun addRS(){
+        rumahSakitrepository.save(addUIStateRS.addEvent.toRS())
     }
 }
