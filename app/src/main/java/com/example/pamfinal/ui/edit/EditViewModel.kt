@@ -36,10 +36,10 @@ class EditViewModel (
     }
 
     fun updateUIState(addEvent: AddEventPendaftar){
-        pendaftarUiState = pendaftarUiState.copy(addEvent = addEvent)
+        pendaftarUiState = pendaftarUiState.copy(addEventPendaftar = addEvent)
     }
 
     suspend fun updatePendaftar(){
-        repository.update(pendaftarUiState.addEvent.toPendaftar())
+        repository.update(pendaftarUiState.addEventPendaftar.toPendaftar())
     }
 }

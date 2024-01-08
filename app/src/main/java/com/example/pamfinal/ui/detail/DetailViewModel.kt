@@ -26,7 +26,7 @@ class DetailViewModelPendaftar (
         repository.getPendaftarById(pendaftarId)
             .filterNotNull()
             .map {
-                DetailUIStatePendaftar(addEvent = it.toDetailPendaftar())
+                DetailUIStatePendaftar(addEventPendaftar = it.toDetailPendaftar())
             }.stateIn(
                 scope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(TIMEOUT_MILIS),

@@ -24,7 +24,8 @@ object DestinasiUtama : DestinasiNavigasi {
 }
 @Composable
 fun HalamanUtama(
-
+onPendaftarClick: () -> Unit,
+onRumahSakitClick: () -> Unit,
 ) {
     Row (
         modifier = Modifier.fillMaxWidth().padding(16.dp),

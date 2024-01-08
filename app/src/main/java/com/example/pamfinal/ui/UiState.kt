@@ -28,9 +28,8 @@ fun AddEventPendaftar.toPendaftar() = Pendaftar(
     nik=nik,
     nama= nama,
     alamat= alamat,
-    telepon = telepon,
     tanggal_lahir = tanggal_lahir,
-
+    telepon = telepon,
 )
 fun AddEventRS.toRS() = RumahSakit(
     id_rs =id_rs,
@@ -69,6 +68,6 @@ data class HomeUIStatePendaftar(
     val dataLength: Int = 0
 )
 data class HomeUIStateRS(
-    val listPendaftar: List<Pendaftar> = listOf(),
+    val listRS: List<RumahSakit> = listOf(),
     val dataLength: Int = 0
 )

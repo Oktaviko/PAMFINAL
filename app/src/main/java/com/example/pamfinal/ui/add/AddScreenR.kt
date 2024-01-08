@@ -85,7 +85,7 @@ fun EntryBodyR(
         modifier = modifier.padding(15.dp)
     ){
         FormInputR(
-            addEvent = addUIState.addEvent,
+            addEvent = addUIState.addEventRS,
             onValueChange = onRSValueChange,
             modifier = Modifier.fillMaxWidth()
         )

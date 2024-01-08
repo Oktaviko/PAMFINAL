@@ -66,7 +66,7 @@ fun DetailScreenPendaftar(
             )
         }, floatingActionButton = {
             FloatingActionButton(
-                onClick = { navigateToEditItem(uiState.value.addEvent.nik) },
+                onClick = { navigateToEditItem(uiState.value.addEventPendaftar.nik) },
                 shape = MaterialTheme.shapes.medium,
                 modifier = Modifier.padding(16.dp)
             ) {
@@ -105,7 +105,7 @@ private fun ItemDetailsBody(
         var deleteConfirmationRequired by rememberSaveable { mutableStateOf(false) }
 
         ItemDetailsPendaftar(
-            pendaftar = detailUIState.addEvent.toPendaftar(),
+            pendaftar = detailUIState.addEventPendaftar.toPendaftar(),
             modifier = Modifier.fillMaxWidth()
         )
         OutlinedButton(

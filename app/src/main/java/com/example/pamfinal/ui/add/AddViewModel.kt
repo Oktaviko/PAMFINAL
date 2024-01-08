@@ -18,11 +18,11 @@ class AddViewModelPendaftar(private val pendaftarRepository: PendaftarRepository
         private set
 
     fun updateAddUIState(addEvent: AddEventPendaftar){
-        addUIStatePendftar = AddUIStatePendaftar(addEvent = addEvent)
+        addUIStatePendftar = AddUIStatePendaftar(addEventPendaftar = addEvent)
     }
 
     suspend fun addPendaftar(){
-        pendaftarRepository.save(addUIStatePendftar.addEvent.toPendaftar())
+        pendaftarRepository.save(addUIStatePendftar.addEventPendaftar.toPendaftar())
     }
 }
 class AddViewModelRS(private val rumahSakitrepository: RumahSakitRepository) : ViewModel(){
@@ -31,10 +31,10 @@ class AddViewModelRS(private val rumahSakitrepository: RumahSakitRepository) : V
         private set
 
     fun updateAddUIState(addEvent: AddEventRS){
-        addUIStateRS = AddUIStateRS(addEvent = addEvent)
+        addUIStateRS = AddUIStateRS(addEventRS = addEvent)
     }
 
     suspend fun addRS(){
-        rumahSakitrepository.save(addUIStateRS.addEvent.toRS())
+        rumahSakitrepository.save(addUIStateRS.addEventRS.toRS())
     }
 }

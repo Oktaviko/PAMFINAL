@@ -83,7 +83,7 @@ fun EntryBodyP(
         modifier = modifier.padding(15.dp)
     ){
         FormInputP(
-            addEvent = addUIState.addEvent,
+            addEvent = addUIState.addEventPendaftar,
             onValueChange = onCustomerValueChange,
             modifier = Modifier.fillMaxWidth()
         )
