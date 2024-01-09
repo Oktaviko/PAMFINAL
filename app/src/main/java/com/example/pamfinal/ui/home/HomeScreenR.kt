@@ -32,23 +32,23 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.pamfinal.model.Pendaftar
+import com.example.pamfinal.model.RumahSakit
 import com.example.pamfinal.navigation.DestinasiNavigasi
-import com.example.pamfinal.ui.BPJSApp
 import com.example.pamfinal.ui.BPJSTopAppBar
 import com.example.pamfinal.ui.PenyediaViewModel
 
-object DestinasiHomePendaftar : DestinasiNavigasi{
-    override val route = "home_pendaftar"
-    override val titleRes = "Pendaftar"
+object DestinasiHomeRS : DestinasiNavigasi {
+    override val route = "home_rs"
+    override val titleRes = "Rumah Sakit"
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreenPendaftar(
+fun HomeScreenRumahSakit(
     navigateToItemEntry: () -> Unit,
     modifier: Modifier = Modifier,
     onDetailClick: (String) -> Unit = {},
-    viewModel: HomeViewModelPendaftar = viewModel(factory = PenyediaViewModel.Factory)
+    viewModel: HomeViewModelRS = viewModel(factory = PenyediaViewModel.Factory)
 ) {
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
 
@@ -56,7 +56,7 @@ fun HomeScreenPendaftar(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             BPJSTopAppBar(
-                title = "Pendaftar",
+                title = "Rumah Sakit",
                 canNavigateBack = false,
                 scrollBehavior = scrollBehavior
             )
@@ -74,65 +74,65 @@ fun HomeScreenPendaftar(
             }
         },
     ) { innerPadding ->
-        val uiStateSiswa by viewModel.homeUIStateP.collectAsState()
-        BodyHomePendaftar(
-            itemPendaftar = uiStateSiswa.listPendaftar,
+        val uiStateRumahS by viewModel.homeUIStateR.collectAsState()
+        BodyHomeRumahSakit(
+            itemRumahSakit = uiStateRumahS.listRS,
             modifier = Modifier
                 .padding(innerPadding)
                 .fillMaxSize(),
-            onCustomerClick = onDetailClick
+            onRSClick = onDetailClick
         )
     }
 }
 @Composable
-fun BodyHomePendaftar(
-    itemPendaftar: List<Pendaftar>,
+fun BodyHomeRumahSakit(
+    itemRumahSakit: List<RumahSakit>,
     modifier: Modifier = Modifier,
-    onCustomerClick: (String) -> Unit = {}
+    onRSClick: (String) -> Unit = {}
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
     ) {
-        if (itemPendaftar.isEmpty()) {
+        if (itemRumahSakit.isEmpty()) {
             Text(
-                text = "Tidak ada data Pendaftar",
+                text = "Tidak ada data Rumah Sakit",
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.titleLarge
             )
         } else {
-            ListPendaftar(
-                itemPendaftar = itemPendaftar,
+            ListRumahSakit(
+                itemRumahSakit = itemRumahSakit,
                 modifier = Modifier
                     .padding(horizontal = 8.dp),
-                onItemClick = { onCustomerClick(it.nik) }
+                onItemClick = { onRSClick(it.id_rs) }
             )
         }
     }
 }
 @Composable
-fun ListPendaftar(
-    itemPendaftar: List<Pendaftar>,
+fun ListRumahSakit(
+    itemRumahSakit: List<RumahSakit>,
     modifier: Modifier = Modifier,
-    onItemClick: (Pendaftar) -> Unit
+    onItemClick: (RumahSakit) -> Unit
 ) {
     LazyColumn(
         modifier = modifier
     ) {
-        this.items(itemPendaftar, key = { it.nik}) { pendaftar ->
-            DataPendaftar(
-                pendaftar = pendaftar,
+        this.items(itemRumahSakit, key = { it.id_rs}) { rumahsakit ->
+            DataRS(
+                rumahSakit = rumahsakit,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clickable { onItemClick(pendaftar) }
+                    .clickable { onItemClick(rumahsakit) }
             )
             Spacer(modifier = Modifier.padding(8.dp))
         }
     }
 }
 @Composable
-fun DataPendaftar(
-    pendaftar: Pendaftar,
+fun DataRS(
+    rumahSakit: RumahSakit,
     modifier: Modifier = Modifier
 ) {
     Card(
@@ -147,21 +147,17 @@ fun DataPendaftar(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(
-                    text = pendaftar.nama,
+                    text = rumahSakit.nama_rs,
                     style = MaterialTheme.typography.titleLarge,
                 )
                 Spacer(Modifier.weight(1f))
-                Icon(
-                    imageVector = Icons.Default.Phone,
-                    contentDescription = null,
-                )
                 Text(
-                    text = pendaftar.telepon,
+                    text = rumahSakit.id_rs,
                     style = MaterialTheme.typography.titleMedium
                 )
             }
             Text(
-                text = pendaftar.alamat,
+                text = rumahSakit.alamat_rs,
                 style = MaterialTheme.typography.titleMedium
             )
         }
