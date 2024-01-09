@@ -51,7 +51,7 @@ fun AddScreenRumahSakit(
         }
     ){innerPadding ->
 
-        EntryBodyP(
+        EntryBodyR(
             addUIState = addViewModel.addUIStateRumahSakit,
             onCustomerValueChange = addViewModel::updateAddUIState,
             onSaveClick = {
