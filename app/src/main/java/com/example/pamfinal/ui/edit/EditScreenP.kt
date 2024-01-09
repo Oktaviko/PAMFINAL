@@ -14,7 +14,7 @@ import com.example.pamfinal.navigation.DestinasiNavigasi
 import com.example.pamfinal.ui.BPJSTopAppBar
 import com.example.pamfinal.ui.PenyediaViewModel
 import com.example.pamfinal.ui.add.EntryBodyP
-import com.example.pamfinal.ui.add.EntryBodyR
+
 import kotlinx.coroutines.launch
 
 object EditDestinationPendaftar : DestinasiNavigasi{

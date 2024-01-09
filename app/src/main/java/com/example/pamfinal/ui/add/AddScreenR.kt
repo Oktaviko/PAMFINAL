@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -18,28 +17,25 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.pamfinal.ui.PenyediaViewModel
 import com.example.pamfinal.navigation.DestinasiNavigasi
-import com.example.pamfinal.ui.AddEventPendaftar
-import com.example.pamfinal.ui.AddEventRS
-import com.example.pamfinal.ui.AddUIStatePendaftar
-import com.example.pamfinal.ui.AddUIStateRS
+import com.example.pamfinal.ui.AddEventRumahSakit
+import com.example.pamfinal.ui.AddUIStateRumahSakit
 import com.example.pamfinal.ui.BPJSTopAppBar
+import com.example.pamfinal.ui.PenyediaViewModel
 import kotlinx.coroutines.launch
 
 object DestinasiEntryR : DestinasiNavigasi {
-    override val route = "item_entry_rs"
-    override val titleRes = "Entry Rumah Sakit"
+    override val route = "item_entry_rumahsakit"
+    override val titleRes = "Entry RumahSakit"
 }
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddScreenRumahSakit(
     navigateBack: () -> Unit,
     modifier: Modifier = Modifier,
-    addViewModel: AddViewModelRS = viewModel(factory = PenyediaViewModel.Factory),
+    addViewModel: AddViewModelRumahSakit = viewModel(factory = PenyediaViewModel.Factory),
 ){
     val coroutineScope = rememberCoroutineScope()
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
@@ -47,7 +43,7 @@ fun AddScreenRumahSakit(
     Scaffold(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
-            BPJSTopAppBar(title = DestinasiEntryR.titleRes,
+            BPJSTopAppBar(title = DestinasiEntryP.titleRes,
                 canNavigateBack = true,
                 scrollBehavior = scrollBehavior,
                 navigateUp = navigateBack
@@ -55,12 +51,12 @@ fun AddScreenRumahSakit(
         }
     ){innerPadding ->
 
-        EntryBodyR(
-            addUIState = addViewModel.addUIStateRS,
-            onRSValueChange = addViewModel::updateAddUIState,
+        EntryBodyP(
+            addUIState = addViewModel.addUIStateRumahSakit,
+            onCustomerValueChange = addViewModel::updateAddUIState,
             onSaveClick = {
                 coroutineScope.launch {
-                    addViewModel.addRS()
+                    addViewModel.addRumahSakit()
                     navigateBack()
                 }
             },
@@ -75,8 +71,8 @@ fun AddScreenRumahSakit(
 
 @Composable
 fun EntryBodyR(
-    addUIState: AddUIStateRS,
-    onRSValueChange: (AddEventRS) -> Unit,
+    addUIState: AddUIStateRumahSakit,
+    onCustomerValueChange: (AddEventRumahSakit) -> Unit,
     onSaveClick: () -> Unit,
     modifier: Modifier = Modifier
 ){
@@ -84,9 +80,9 @@ fun EntryBodyR(
         verticalArrangement = Arrangement.spacedBy(15.dp),
         modifier = modifier.padding(15.dp)
     ){
-        FormInputR(
-            addEvent = addUIState.addEventRS,
-            onValueChange = onRSValueChange,
+        FormInputP(
+            addEvent = addUIState.addEventRumahSakit,
+            onValueChange = onCustomerValueChange,
             modifier = Modifier.fillMaxWidth()
         )
         Button(onClick = onSaveClick,
@@ -99,10 +95,10 @@ fun EntryBodyR(
 }
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FormInputR(
-    addEvent: AddEventRS,
+fun FormInputP(
+    addEvent: AddEventRumahSakit,
     modifier: Modifier = Modifier,
-    onValueChange: (AddEventRS) -> Unit = {},
+    onValueChange: (AddEventRumahSakit) -> Unit = {},
     enabled: Boolean = true
 ){
     Column(
@@ -112,7 +108,7 @@ fun FormInputR(
         OutlinedTextField(
             value = addEvent.nama_rs,
             onValueChange = {onValueChange(addEvent.copy(nama_rs = it))},
-            label ={Text("Nama Rumah Sakit")},
+            label ={ Text("Nama") },
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
             singleLine = true
@@ -120,7 +116,7 @@ fun FormInputR(
         OutlinedTextField(
             value = addEvent.id_rs,
             onValueChange = {onValueChange(addEvent.copy(id_rs = it))},
-            label ={Text("id rs")},
+            label ={ Text("ID_RS") },
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
             singleLine = true
@@ -128,10 +124,11 @@ fun FormInputR(
         OutlinedTextField(
             value = addEvent.alamat_rs,
             onValueChange = {onValueChange(addEvent.copy(alamat_rs = it))},
-            label ={Text("Alamat Rumah Sakit")},
+            label ={ Text("Alamat") },
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
             singleLine = true
         )
+
     }
 }

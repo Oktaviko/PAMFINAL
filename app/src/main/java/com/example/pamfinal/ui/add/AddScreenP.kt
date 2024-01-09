@@ -27,6 +27,7 @@ import com.example.pamfinal.ui.AddEventPendaftar
 import com.example.pamfinal.ui.AddUIStatePendaftar
 import com.example.pamfinal.ui.BPJSTopAppBar
 import kotlinx.coroutines.launch
+import kotlin.reflect.KFunction1
 
 object DestinasiEntryP : DestinasiNavigasi {
     override val route = "item_entry_pendaftar"
@@ -74,7 +75,7 @@ fun AddScreenPendaftar(
 @Composable
 fun EntryBodyP(
     addUIState: AddUIStatePendaftar,
-    onCustomerValueChange: (AddEventPendaftar) -> Unit,
+    onCustomerValueChange: KFunction1<AddEventPendaftar, Unit>,
     onSaveClick: () -> Unit,
     modifier: Modifier = Modifier
 ){

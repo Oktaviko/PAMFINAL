@@ -31,15 +31,14 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.pamfinal.model.Pendaftar
 import com.example.pamfinal.model.RumahSakit
 import com.example.pamfinal.navigation.DestinasiNavigasi
 import com.example.pamfinal.ui.BPJSTopAppBar
 import com.example.pamfinal.ui.PenyediaViewModel
 
-object DestinasiHomeRS : DestinasiNavigasi {
-    override val route = "home_rs"
-    override val titleRes = "Rumah Sakit"
+object DestinasiHomeRumahSakit : DestinasiNavigasi {
+    override val route = "home_rumahsakit"
+    override val titleRes = "RumahSakit"
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -48,7 +47,7 @@ fun HomeScreenRumahSakit(
     navigateToItemEntry: () -> Unit,
     modifier: Modifier = Modifier,
     onDetailClick: (String) -> Unit = {},
-    viewModel: HomeViewModelRS = viewModel(factory = PenyediaViewModel.Factory)
+    viewModel: HomeViewModelRumahSakit = viewModel(factory = PenyediaViewModel.Factory)
 ) {
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
 
@@ -56,7 +55,7 @@ fun HomeScreenRumahSakit(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             BPJSTopAppBar(
-                title = "Rumah Sakit",
+                title = "RumahSakit",
                 canNavigateBack = false,
                 scrollBehavior = scrollBehavior
             )
@@ -74,13 +73,13 @@ fun HomeScreenRumahSakit(
             }
         },
     ) { innerPadding ->
-        val uiStateRumahS by viewModel.homeUIStateR.collectAsState()
+        val uiStateSiswa by viewModel.homeUIStateR.collectAsState()
         BodyHomeRumahSakit(
-            itemRumahSakit = uiStateRumahS.listRS,
+            itemRumahSakit = uiStateSiswa.listRumahSakit,
             modifier = Modifier
                 .padding(innerPadding)
                 .fillMaxSize(),
-            onRSClick = onDetailClick
+            onCustomerClick = onDetailClick
         )
     }
 }
@@ -88,7 +87,7 @@ fun HomeScreenRumahSakit(
 fun BodyHomeRumahSakit(
     itemRumahSakit: List<RumahSakit>,
     modifier: Modifier = Modifier,
-    onRSClick: (String) -> Unit = {}
+    onCustomerClick: (String) -> Unit = {}
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -96,7 +95,7 @@ fun BodyHomeRumahSakit(
     ) {
         if (itemRumahSakit.isEmpty()) {
             Text(
-                text = "Tidak ada data Rumah Sakit",
+                text = "Tidak ada data RumahSakit",
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.titleLarge
             )
@@ -105,7 +104,7 @@ fun BodyHomeRumahSakit(
                 itemRumahSakit = itemRumahSakit,
                 modifier = Modifier
                     .padding(horizontal = 8.dp),
-                onItemClick = { onRSClick(it.id_rs) }
+                onItemClick = { onCustomerClick(it.id_rs) }
             )
         }
     }
@@ -120,8 +119,8 @@ fun ListRumahSakit(
         modifier = modifier
     ) {
         this.items(itemRumahSakit, key = { it.id_rs}) { rumahsakit ->
-            DataRS(
-                rumahSakit = rumahsakit,
+            DataRumahSakit(
+                rumahsakit = rumahsakit,
                 modifier = Modifier
                     .fillMaxWidth()
                     .clickable { onItemClick(rumahsakit) }
@@ -131,8 +130,8 @@ fun ListRumahSakit(
     }
 }
 @Composable
-fun DataRS(
-    rumahSakit: RumahSakit,
+fun DataRumahSakit(
+    rumahsakit: RumahSakit,
     modifier: Modifier = Modifier
 ) {
     Card(
@@ -147,17 +146,17 @@ fun DataRS(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(
-                    text = rumahSakit.nama_rs,
+                    text = rumahsakit.nama_rs,
                     style = MaterialTheme.typography.titleLarge,
                 )
                 Spacer(Modifier.weight(1f))
-                Text(
-                    text = rumahSakit.id_rs,
-                    style = MaterialTheme.typography.titleMedium
+                Icon(
+                    imageVector = Icons.Default.Phone,
+                    contentDescription = null,
                 )
             }
             Text(
-                text = rumahSakit.alamat_rs,
+                text = rumahsakit.alamat_rs,
                 style = MaterialTheme.typography.titleMedium
             )
         }

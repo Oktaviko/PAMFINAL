@@ -64,11 +64,10 @@ class PendaftarRepositoryImpl(private val firestore: FirebaseFirestore) : Pendaf
 }
 interface RumahSakitRepository {
     fun getAll(): Flow<List<RumahSakit>>
-    suspend fun save(RumahSakit : RumahSakit): String
-    suspend fun update(RumahSakit : RumahSakit)
-    suspend fun delete(RumahSakitId: String)
-    fun getRumahSakitById(RumahSakitId: String): Flow<RumahSakitRepository>
-
+    suspend fun save(rumahsakit: RumahSakit): String
+    suspend fun update(rumahsakit: RumahSakit)
+    suspend fun delete(rumahsakitId: String)
+    fun getRumahSakitById(rumahsakitId: String): Flow<RumahSakit>
 }
 
 class RumahSakitRepositoryImpl(private val firestore: FirebaseFirestore) : RumahSakitRepository {
@@ -77,17 +76,17 @@ class RumahSakitRepositoryImpl(private val firestore: FirebaseFirestore) : Rumah
             .orderBy("nama", Query.Direction.ASCENDING)
             .get()
             .await()
-        val rumahSakit  = snapshot.toObjects(RumahSakit::class.java)
-        emit(rumahSakit)
+        val rumahsakit = snapshot.toObjects(RumahSakit::class.java)
+        emit(rumahsakit)
     }.flowOn(Dispatchers.IO)
 
 
-    override suspend fun save(rumahSakit: RumahSakit): String {
+    override suspend fun save(rumahsakit: RumahSakit): String {
         return try {
-            val documentReference = firestore.collection("RumahSakit").add(rumahSakit).await()
-            // Update the RumahSakit with the Firestore-generated DocumentReference
+            val documentReference = firestore.collection("RumahSakit").add(rumahsakit).await()
+            // Update the Pendaftar with the Firestore-generated DocumentReference
             firestore.collection("RumahSakit").document(documentReference.id)
-                .set(rumahSakit.copy(id_rs = documentReference.id))
+                .set(rumahsakit.copy(id_rs = documentReference.id))
             "Berhasil + ${documentReference.id}"
         } catch (e: Exception) {
             Log.w(ContentValues.TAG, "Error adding document", e)
@@ -95,19 +94,19 @@ class RumahSakitRepositoryImpl(private val firestore: FirebaseFirestore) : Rumah
         }
     }
 
-    override suspend fun update(rumahSakit: RumahSakit) {
-        firestore.collection("RumahSakit").document(rumahSakit.id_rs).set(rumahSakit ).await()
+    override suspend fun update(rumahsakit: RumahSakit) {
+        firestore.collection("RumahSakit").document(rumahsakit.id_rs).set(rumahsakit).await()
     }
 
-    override suspend fun delete(RumahSakitId: String) {
-        firestore.collection("RumahSakit").document(RumahSakitId).delete().await()
+    override suspend fun delete(rumahsakitId: String) {
+        firestore.collection("RumahSakit").document(rumahsakitId).delete().await()
     }
 
-    override fun getRumahSakitById(RumahSakitId: String): Flow<RumahSakitRepository> {
+    override fun getRumahSakitById(rumahsakitId: String): Flow<RumahSakit> {
         return flow {
-            val snapshot = firestore.collection("RumahSakit").document(RumahSakitId).get().await()
-            val RumahSakit  = snapshot.toObject(RumahSakitRepository::class.java)
-            emit(RumahSakit !!)
+            val snapshot = firestore.collection("Pendaftar").document(rumahsakitId).get().await()
+            val pendaftar = snapshot.toObject(RumahSakit::class.java)
+            emit(pendaftar!!)
         }.flowOn(Dispatchers.IO)
     }
 

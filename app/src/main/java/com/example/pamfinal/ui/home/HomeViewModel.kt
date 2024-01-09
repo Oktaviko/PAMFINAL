@@ -7,7 +7,7 @@ import com.example.pamfinal.data.RumahSakitRepository
 import com.example.pamfinal.model.Pendaftar
 import com.example.pamfinal.model.RumahSakit
 import com.example.pamfinal.ui.HomeUIStatePendaftar
-import com.example.pamfinal.ui.HomeUIStateRS
+import com.example.pamfinal.ui.HomeUIStateRumahSakit
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -40,28 +40,28 @@ class HomeViewModelPendaftar(private val pendaftarRepository: PendaftarRepositor
             initialValue = HomeUIStatePendaftar()
         )
 }
-
-sealed class RSUIState {
-    data class Success(val rs: Flow<List<RumahSakit>>) : RSUIState()
-    object Error : RSUIState()
-    object Loading : RSUIState()
+sealed class RumahSakitUIState {
+    data class Success(val rumahsakit: Flow<List<RumahSakit>>) : RumahSakitUIState()
+    object Error : RumahSakitUIState()
+    object Loading : RumahSakitUIState()
 }
 
-class HomeViewModelRS(private val rumahSakitRepository: RumahSakitRepository) : ViewModel(){
+class HomeViewModelRumahSakit(private val rumahsakitRepository: RumahSakitRepository) : ViewModel(){
 
     companion object{
         private const val TIMEOUT_MILLIS = 5_000L
     }
-    val homeUIStateR: StateFlow<HomeUIStateRS> = rumahSakitRepository.getAll()
+    val homeUIStateR: StateFlow<HomeUIStateRumahSakit> = rumahsakitRepository.getAll()
         .filterNotNull()
         .map {
-            HomeUIStateRS(
-                listRS = it.toList(),
+            HomeUIStateRumahSakit(
+                listRumahSakit = it.toList(),
                 it.size)
         }
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(TIMEOUT_MILLIS),
-            initialValue = HomeUIStateRS()
+            initialValue = HomeUIStateRumahSakit()
         )
 }
+

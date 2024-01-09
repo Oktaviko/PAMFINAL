@@ -17,16 +17,16 @@ import com.example.pamfinal.ui.add.EntryBodyP
 import com.example.pamfinal.ui.add.EntryBodyR
 import kotlinx.coroutines.launch
 
-object EditDestinationRS : DestinasiNavigasi{
-    override val route = "item_edit_rs"
-    override val titleRes = "Edit Rumah Sakit"
-    const val rs_Id = "itemId"
-    val routeWithArgs = "${EditDestinationRS.route}/{$rs_Id}"
+object EditDestinationRumahSakit : DestinasiNavigasi {
+    override val route = "item_edit_rumahsakit"
+    override val titleRes = "Edit RumahSakit"
+    const val rumahsakitId = "itemId"
+    val routeWithArgs = "${EditDestinationRumahSakit.route}/{$rumahsakitId}"
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun EditScreenRS(
+fun EditScreenRumahSakit(
     navigateBack: () -> Unit,
     onNavigateUp: () -> Unit,
     modifier: Modifier = Modifier,
@@ -36,7 +36,7 @@ fun EditScreenRS(
     Scaffold(
         topBar = {
             BPJSTopAppBar(
-                title = EditDestinationRS.titleRes,
+                title = EditDestinationRumahSakit.titleRes,
                 canNavigateBack = true,
                 navigateUp = onNavigateUp
             )
@@ -44,11 +44,11 @@ fun EditScreenRS(
         modifier = modifier
     ){innerPadding ->
         EntryBodyR(
-            addUIState = viewModel.rsUiState,
-            onRSValueChange = viewModel::updateUIState,
+            addUIState = viewModel.rumahsakitUiState,
+            onCustomerValueChange = viewModel::updateUIState,
             onSaveClick = {
                 coroutineScope.launch {
-                    viewModel.updateRS()
+                    viewModel.updateRumahSakit()
                     navigateBack()
                 }
             },
@@ -57,5 +57,6 @@ fun EditScreenRS(
                 .verticalScroll(rememberScrollState())
                 .fillMaxWidth()
         )
+
     }
 }

@@ -7,8 +7,8 @@ import com.example.pamfinal.model.RumahSakit
 data class AddUIStatePendaftar(
     val addEventPendaftar: AddEventPendaftar = AddEventPendaftar(),
 )
-data class AddUIStateRS(
-    val addEventRS: AddEventRS = AddEventRS(),
+data class AddUIStateRumahSakit(
+    val addEventRumahSakit: AddEventRumahSakit = AddEventRumahSakit(),
 )
 
 data class AddEventPendaftar(
@@ -18,7 +18,7 @@ data class AddEventPendaftar(
     val telepon: String = "",
     val tanggal_lahir: String = "",
 )
-data class AddEventRS(
+data class AddEventRumahSakit(
     val id_rs: String = "",
     val nama_rs: String = "",
     val alamat_rs: String = "",
@@ -31,7 +31,7 @@ fun AddEventPendaftar.toPendaftar() = Pendaftar(
     tanggal_lahir = tanggal_lahir,
     telepon = telepon,
 )
-fun AddEventRS.toRS() = RumahSakit(
+fun AddEventRumahSakit.toRumahSakit() = RumahSakit(
     id_rs =id_rs,
     nama_rs = nama_rs,
     alamat_rs = alamat_rs,
@@ -39,8 +39,8 @@ fun AddEventRS.toRS() = RumahSakit(
 data class DetailUIStatePendaftar(
     val addEventPendaftar: AddEventPendaftar = AddEventPendaftar(),
 )
-data class DetailUIStateRS(
-    val addEventRS: AddEventRS = AddEventRS(),
+data class DetailUIStateRumahSakit(
+    val addEventRumahSakit: AddEventRumahSakit = AddEventRumahSakit(),
 )
 fun Pendaftar.toDetailPendaftar(): AddEventPendaftar =
     AddEventPendaftar(
@@ -50,8 +50,8 @@ fun Pendaftar.toDetailPendaftar(): AddEventPendaftar =
         telepon = telepon,
         tanggal_lahir = tanggal_lahir,
     )
-fun RumahSakit.toDetailRS(): AddEventRS =
-    AddEventRS(
+fun RumahSakit.toDetailRumahSakit(): AddEventRumahSakit =
+    AddEventRumahSakit(
         id_rs =id_rs,
         nama_rs = nama_rs,
         alamat_rs = alamat_rs,
@@ -59,15 +59,15 @@ fun RumahSakit.toDetailRS(): AddEventRS =
 fun Pendaftar.toUIStatePendaftar(): AddUIStatePendaftar = AddUIStatePendaftar(
     addEventPendaftar = this.toDetailPendaftar()
 )
-fun RumahSakit.toUIStateRS(): AddUIStateRS = AddUIStateRS(
-    addEventRS = this.toDetailRS()
+fun RumahSakit.toUIStateRumahSakit(): AddUIStateRumahSakit = AddUIStateRumahSakit(
+    addEventRumahSakit = this.toDetailRumahSakit()
 )
 
 data class HomeUIStatePendaftar(
     val listPendaftar: List<Pendaftar> = listOf(),
     val dataLength: Int = 0
 )
-data class HomeUIStateRS(
-    val listRS: List<RumahSakit> = listOf(),
+data class HomeUIStateRumahSakit(
+    val listRumahSakit: List<RumahSakit> = listOf(),
     val dataLength: Int = 0
 )
