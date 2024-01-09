@@ -43,3 +43,5 @@ class EditViewModel (
         repository.update(pendaftarUiState.addEventPendaftar.toPendaftar())
     }
 }
+
+//test
