@@ -17,11 +17,11 @@ import com.example.pamfinal.ui.add.EntryBodyP
 import com.example.pamfinal.ui.add.EntryBodyR
 import kotlinx.coroutines.launch
 
-object EditDestination : DestinasiNavigasi{
+object EditDestinationPendaftar : DestinasiNavigasi{
     override val route = "item_edit_pendaftar"
     override val titleRes = "Edit Pendaftar"
     const val pendaftarId = "itemId"
-    val routeWithArgs = "${EditDestination.route}/{$pendaftarId}"
+    val routeWithArgs = "${EditDestinationPendaftar.route}/{$pendaftarId}"
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -30,13 +30,13 @@ fun EditScreenPendaftar(
     navigateBack: () -> Unit,
     onNavigateUp: () -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: EditViewModel = viewModel(factory = PenyediaViewModel.Factory)
+    viewModel: EditViewModelPendaftar = viewModel(factory = PenyediaViewModel.Factory)
 ){
     val coroutineScope = rememberCoroutineScope()
     Scaffold(
         topBar = {
             BPJSTopAppBar(
-                title = EditDestination.titleRes,
+                title = EditDestinationPendaftar.titleRes,
                 canNavigateBack = true,
                 navigateUp = onNavigateUp
             )

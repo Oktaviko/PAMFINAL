@@ -10,7 +10,8 @@ import com.example.pamfinal.ui.add.AddViewModelPendaftar
 import com.example.pamfinal.ui.add.AddViewModelRS
 import com.example.pamfinal.ui.detail.DetailViewModelPendaftar
 import com.example.pamfinal.ui.detail.DetailViewModelRS
-import com.example.pamfinal.ui.edit.EditViewModel
+import com.example.pamfinal.ui.edit.EditViewModelPendaftar
+import com.example.pamfinal.ui.edit.EditViewModelRumahSakit
 
 fun CreationExtras.aplikasiBPJS(): BPJSApplication =
     (this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as BPJSApplication)
@@ -36,9 +37,15 @@ object PenyediaViewModel {
             )
         }
         initializer {
-            EditViewModel(
+            EditViewModelPendaftar(
                 createSavedStateHandle(),
                 aplikasiBPJS().container.pendaftarRepository
+            )
+        }
+        initializer {
+            EditViewModelRumahSakit(
+                createSavedStateHandle(),
+                aplikasiBPJS().container.rsRepository
             )
         }
     }
