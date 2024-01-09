@@ -48,7 +48,7 @@ onRumahSakitClick: () -> Unit,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Button(
-                onClick = { /* Handle button click */ },
+                onClick =  onPendaftarClick ,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(56.dp)
@@ -57,7 +57,7 @@ onRumahSakitClick: () -> Unit,
             }
 
             Button(
-                onClick = { /* Handle button click */ },
+                onClick = onRumahSakitClick ,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(56.dp)

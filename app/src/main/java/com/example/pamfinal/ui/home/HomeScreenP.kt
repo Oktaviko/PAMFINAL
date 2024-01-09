@@ -33,7 +33,6 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.pamfinal.model.Pendaftar
 import com.example.pamfinal.navigation.DestinasiNavigasi
-import com.example.pamfinal.ui.BPJSApp
 import com.example.pamfinal.ui.BPJSTopAppBar
 import com.example.pamfinal.ui.PenyediaViewModel
 

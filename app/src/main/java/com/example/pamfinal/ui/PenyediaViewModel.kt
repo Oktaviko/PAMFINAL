@@ -11,6 +11,7 @@ import com.example.pamfinal.ui.add.AddViewModelPendaftar
 import com.example.pamfinal.ui.detail.DetailViewModelPendaftar
 
 import com.example.pamfinal.ui.edit.EditViewModelPendaftar
+import com.example.pamfinal.ui.home.HomeViewModelPendaftar
 
 
 fun CreationExtras.aplikasiBPJS(): BPJSApplication =
@@ -18,6 +19,11 @@ fun CreationExtras.aplikasiBPJS(): BPJSApplication =
 
 object PenyediaViewModel {
     val Factory = viewModelFactory {
+
+        initializer {
+            HomeViewModelPendaftar(aplikasiBPJS().container.pendaftarRepository)
+        }
+
         initializer {
             AddViewModelPendaftar(aplikasiBPJS().container.pendaftarRepository)
         }

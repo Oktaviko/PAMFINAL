@@ -2,7 +2,6 @@ package com.example.pamfinal.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavHost
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -11,7 +10,6 @@ import com.example.pamfinal.ui.DestinasiUtama
 import com.example.pamfinal.ui.HalamanUtama
 import com.example.pamfinal.ui.add.AddScreenPendaftar
 import com.example.pamfinal.ui.add.DestinasiEntryP
-import com.example.pamfinal.ui.add.EntryBodyP
 import com.example.pamfinal.ui.home.DestinasiHomePendaftar
 import com.example.pamfinal.ui.home.HomeScreenPendaftar
 
