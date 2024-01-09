@@ -12,6 +12,7 @@ import com.example.pamfinal.ui.detail.DetailViewModelPendaftar
 
 import com.example.pamfinal.ui.edit.EditViewModelPendaftar
 import com.example.pamfinal.ui.home.HomeViewModelPendaftar
+import com.example.pamfinal.ui.home.HomeViewModelRumahSakit
 
 
 fun CreationExtras.aplikasiBPJS(): BPJSApplication =
@@ -27,6 +28,11 @@ object PenyediaViewModel {
         initializer {
             AddViewModelPendaftar(aplikasiBPJS().container.pendaftarRepository)
         }
+
+        initializer {
+            HomeViewModelRumahSakit(aplikasiBPJS().container.rumahsakitRepository)
+        }
+
         initializer {
             DetailViewModelPendaftar(
                 createSavedStateHandle(),

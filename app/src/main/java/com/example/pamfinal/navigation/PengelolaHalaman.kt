@@ -10,8 +10,11 @@ import com.example.pamfinal.ui.DestinasiUtama
 import com.example.pamfinal.ui.HalamanUtama
 import com.example.pamfinal.ui.add.AddScreenPendaftar
 import com.example.pamfinal.ui.add.DestinasiEntryP
+import com.example.pamfinal.ui.add.DestinasiEntryR
 import com.example.pamfinal.ui.home.DestinasiHomePendaftar
+import com.example.pamfinal.ui.home.DestinasiHomeRumahSakit
 import com.example.pamfinal.ui.home.HomeScreenPendaftar
+import com.example.pamfinal.ui.home.HomeScreenRumahSakit
 
 @Composable
 fun PengelolaHalaman(navController: NavHostController = rememberNavController()) {
@@ -23,7 +26,7 @@ fun PengelolaHalaman(navController: NavHostController = rememberNavController())
         composable(DestinasiUtama.route){
             HalamanUtama(
                 onPendaftarClick = {navController.navigate(DestinasiHomePendaftar.route)},
-                onRumahSakitClick = {}
+                onRumahSakitClick = {navController.navigate(DestinasiHomeRumahSakit.route)}
             )
         }
         composable(DestinasiHomePendaftar.route){
@@ -37,6 +40,13 @@ fun PengelolaHalaman(navController: NavHostController = rememberNavController())
             AddScreenPendaftar(navigateBack = {
                 navController.navigate(DestinasiHomePendaftar.route)
             })
+        }
+
+        composable(DestinasiEntryR.route){
+            HomeScreenRumahSakit(navigateToItemEntry = {
+                navController.navigate(DestinasiEntryR.route) },
+                onDetailClick = {}
+                )
         }
     }
 }
