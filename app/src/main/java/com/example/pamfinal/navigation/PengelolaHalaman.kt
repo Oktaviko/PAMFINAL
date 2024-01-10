@@ -69,8 +69,8 @@ fun PengelolaHalaman(navController: NavHostController = rememberNavController())
         }
         composable(DestinasiEntryP.route){
             AddScreenPendaftar(navigateBack = {
-                navController.popBackStack()
-            })
+                navController.popBackStack() }
+            )
         }
         composable(
             route = EditDestinationPendaftar.routeWithArgs,
