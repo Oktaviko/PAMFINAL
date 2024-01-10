@@ -7,10 +7,13 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.pamfinal.BPJSApplication
 import com.example.pamfinal.ui.add.AddViewModelPendaftar
+import com.example.pamfinal.ui.add.AddViewModelRumahSakit
 
 import com.example.pamfinal.ui.detail.DetailViewModelPendaftar
+import com.example.pamfinal.ui.detail.DetailViewModelRumahSakit
 
 import com.example.pamfinal.ui.edit.EditViewModelPendaftar
+import com.example.pamfinal.ui.edit.EditViewModelRumahSakit
 import com.example.pamfinal.ui.home.HomeViewModelPendaftar
 import com.example.pamfinal.ui.home.HomeViewModelRumahSakit
 
@@ -30,10 +33,6 @@ object PenyediaViewModel {
         }
 
         initializer {
-            HomeViewModelRumahSakit(aplikasiBPJS().container.rumahsakitRepository)
-        }
-
-        initializer {
             DetailViewModelPendaftar(
                 createSavedStateHandle(),
                 aplikasiBPJS().container.pendaftarRepository
@@ -44,6 +43,26 @@ object PenyediaViewModel {
             EditViewModelPendaftar(
                 createSavedStateHandle(),
                 aplikasiBPJS().container.pendaftarRepository
+            )
+        }
+
+        initializer {
+            HomeViewModelRumahSakit(aplikasiBPJS().container.rumahsakitRepository)
+        }
+        initializer {
+            AddViewModelRumahSakit(aplikasiBPJS().container.rumahsakitRepository)
+        }
+        initializer {
+            DetailViewModelRumahSakit(
+                createSavedStateHandle(),
+                aplikasiBPJS().container.rumahsakitRepository
+            )
+        }
+
+        initializer {
+            EditViewModelRumahSakit(
+                createSavedStateHandle(),
+                aplikasiBPJS().container.rumahsakitRepository
             )
         }
     }
