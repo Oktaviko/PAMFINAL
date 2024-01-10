@@ -39,7 +39,9 @@ fun PengelolaHalaman(navController: NavHostController = rememberNavController())
                 navController.navigate(DestinasiEntryP.route)
             },
                 onDetailClick = {
-                    navController.navigate((DetailDestinationPendaftar.route))
+                        pendaftarId ->
+                    navController.navigate("${DetailDestinationPendaftar.route}/$pendaftarId")
+                    println("itemId Pendaftar: $pendaftarId")
                 }
             )
         }
