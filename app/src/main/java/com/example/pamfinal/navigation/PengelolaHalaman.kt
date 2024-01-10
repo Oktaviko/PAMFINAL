@@ -11,12 +11,17 @@ import androidx.navigation.navArgument
 import com.example.pamfinal.ui.DestinasiUtama
 import com.example.pamfinal.ui.HalamanUtama
 import com.example.pamfinal.ui.add.AddScreenPendaftar
+import com.example.pamfinal.ui.add.AddScreenRumahSakit
 import com.example.pamfinal.ui.add.DestinasiEntryP
 import com.example.pamfinal.ui.add.DestinasiEntryR
 import com.example.pamfinal.ui.detail.DetailDestinationPendaftar
+import com.example.pamfinal.ui.detail.DetailDestinationRumahSakit
 import com.example.pamfinal.ui.detail.DetailScreenPendaftar
+import com.example.pamfinal.ui.detail.DetailScreenRumahSakit
 import com.example.pamfinal.ui.edit.EditDestinationPendaftar
+import com.example.pamfinal.ui.edit.EditDestinationRumahSakit
 import com.example.pamfinal.ui.edit.EditScreenPendaftar
+import com.example.pamfinal.ui.edit.EditScreenRumahSakit
 import com.example.pamfinal.ui.home.DestinasiHomePendaftar
 import com.example.pamfinal.ui.home.DestinasiHomeRumahSakit
 import com.example.pamfinal.ui.home.HomeScreenPendaftar
@@ -42,7 +47,7 @@ fun PengelolaHalaman(navController: NavHostController = rememberNavController())
                 onDetailClick = {
                         pendaftarId ->
                     navController.navigate("${DetailDestinationPendaftar.route}/$pendaftarId")
-                    println("itemId Pendaftar: $pendaftarId")
+                    println("itemId: $pendaftarId")
                 }
             )
         }
@@ -57,7 +62,7 @@ fun PengelolaHalaman(navController: NavHostController = rememberNavController())
                 DetailScreenPendaftar(
                     navigateToEditItem = {
                                          navController.navigate("${EditDestinationPendaftar.route}/$pendaftarId")
-                        println("pendaftarId: $pendaftarId")
+                        println("itemId: $pendaftarId")
                     },
                     navigateBack = { navController.popBackStack() })
             }
@@ -80,7 +85,50 @@ fun PengelolaHalaman(navController: NavHostController = rememberNavController())
                     onNavigateUp = { navController.navigateUp() })
             }
         }
-
-
+        composable(DestinasiHomeRumahSakit.route){
+            HomeScreenRumahSakit(navigateToItemEntry = {
+                navController.navigate(DestinasiEntryR.route)
+            },
+                onDetailClick = {
+                        rumahsakitId ->
+                    navController.navigate("${DetailDestinationRumahSakit.route}/$rumahsakitId")
+                    println("itemId: $rumahsakitId")
+                }
+            )
+        }
+        composable(
+            route = DetailDestinationRumahSakit.routeWithArgs,
+            arguments = listOf(navArgument(DetailDestinationRumahSakit.rumahsakitId){
+                type = NavType.StringType
+            })
+        ){backStackEntry ->
+            val rumahsakitId = backStackEntry.arguments?.getString(DetailDestinationRumahSakit.rumahsakitId)
+            rumahsakitId?.let {
+                DetailScreenRumahSakit(
+                    navigateToEditItem = {
+                        navController.navigate("${EditDestinationRumahSakit.route}/$rumahsakitId")
+                        println("itemId: $rumahsakitId")
+                    },
+                    navigateBack = { navController.popBackStack() })
+            }
+        }
+        composable(DestinasiEntryR.route){
+            AddScreenRumahSakit(navigateBack = {
+                navController.popBackStack()
+            })
+        }
+        composable(
+            route = EditDestinationRumahSakit.routeWithArgs,
+            arguments = listOf(navArgument(EditDestinationRumahSakit.rumahsakitId) {
+                type = NavType.StringType
+            })
+        ) { backStackEntry ->
+            val rumahSakitId = backStackEntry.arguments?.getString(EditDestinationRumahSakit.rumahsakitId)
+            rumahSakitId?.let {
+                EditScreenRumahSakit(
+                    navigateBack = { navController.popBackStack() },
+                    onNavigateUp = { navController.navigateUp() })
+            }
+        }
     }
 }
