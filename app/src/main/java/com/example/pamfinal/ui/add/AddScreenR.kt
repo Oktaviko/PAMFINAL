@@ -43,7 +43,7 @@ fun AddScreenRumahSakit(
     Scaffold(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
-            BPJSTopAppBar(title = DestinasiEntryP.titleRes,
+            BPJSTopAppBar(title = DestinasiEntryR.titleRes,
                 canNavigateBack = true,
                 scrollBehavior = scrollBehavior,
                 navigateUp = navigateBack
@@ -108,7 +108,7 @@ fun FormInputP(
         OutlinedTextField(
             value = addEvent.nama_rs,
             onValueChange = {onValueChange(addEvent.copy(nama_rs = it))},
-            label ={ Text("Nama") },
+            label ={ Text("Nama Rumah Sakit") },
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
             singleLine = true
@@ -124,7 +124,7 @@ fun FormInputP(
         OutlinedTextField(
             value = addEvent.alamat_rs,
             onValueChange = {onValueChange(addEvent.copy(alamat_rs = it))},
-            label ={ Text("Alamat") },
+            label ={ Text("Alamat Rumah Sakit") },
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
             singleLine = true
