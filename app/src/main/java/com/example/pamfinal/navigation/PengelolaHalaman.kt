@@ -16,6 +16,7 @@ import com.example.pamfinal.ui.add.DestinasiEntryR
 import com.example.pamfinal.ui.detail.DetailDestinationPendaftar
 import com.example.pamfinal.ui.detail.DetailScreenPendaftar
 import com.example.pamfinal.ui.edit.EditDestinationPendaftar
+import com.example.pamfinal.ui.edit.EditScreenPendaftar
 import com.example.pamfinal.ui.home.DestinasiHomePendaftar
 import com.example.pamfinal.ui.home.DestinasiHomeRumahSakit
 import com.example.pamfinal.ui.home.HomeScreenPendaftar
@@ -63,15 +64,23 @@ fun PengelolaHalaman(navController: NavHostController = rememberNavController())
         }
         composable(DestinasiEntryP.route){
             AddScreenPendaftar(navigateBack = {
-                navController.navigate(DestinasiHomePendaftar.route)
+                navController.popBackStack()
             })
         }
-
-        composable(DestinasiEntryR.route){
-            HomeScreenRumahSakit(navigateToItemEntry = {
-                navController.navigate(DestinasiEntryR.route) },
-                onDetailClick = {}
-                )
+        composable(
+            route = EditDestinationPendaftar.routeWithArgs,
+            arguments = listOf(navArgument(EditDestinationPendaftar.pendaftarId) {
+                type = NavType.StringType
+            })
+        ) { backStackEntry ->
+            val pendaftarId = backStackEntry.arguments?.getString(EditDestinationPendaftar.pendaftarId)
+            pendaftarId?.let {
+                EditScreenPendaftar(
+                    navigateBack = { navController.popBackStack() },
+                    onNavigateUp = { navController.navigateUp() })
+            }
         }
+
+
     }
 }
