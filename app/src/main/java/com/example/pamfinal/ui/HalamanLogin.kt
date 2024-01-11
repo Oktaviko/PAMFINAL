@@ -60,7 +60,7 @@ fun LoginScreen(
     auth = Firebase.auth
     var emailText by remember { mutableStateOf("") }
     var passwordText by remember { mutableStateOf("") }
-
+    val image = painterResource(id = R.drawable.loging)
 
     Column(
         modifier = Modifier
