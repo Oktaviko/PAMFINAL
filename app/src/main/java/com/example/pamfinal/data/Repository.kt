@@ -74,7 +74,7 @@ interface RumahSakitRepository {
 class RumahSakitRepositoryImpl(private val firestore: FirebaseFirestore) : RumahSakitRepository {
     override fun getAll(): Flow<List<RumahSakit>> = flow {
         val snapshot = firestore.collection("RumahSakit")
-            .orderBy("nama", Query.Direction.ASCENDING)
+            .orderBy("nama_rs", Query.Direction.ASCENDING)
             .get()
             .await()
         val rumahsakit = snapshot.toObjects(RumahSakit::class.java)
@@ -105,7 +105,7 @@ class RumahSakitRepositoryImpl(private val firestore: FirebaseFirestore) : Rumah
 
     override fun getRumahSakitById(rumahsakitId: String): Flow<RumahSakit> {
         return flow {
-            val snapshot = firestore.collection("Pendaftar").document(rumahsakitId).get().await()
+            val snapshot = firestore.collection("RumahSakit").document(rumahsakitId).get().await()
             val rumahsakit = snapshot.toObject(RumahSakit::class.java)
             emit(rumahsakit!!)
         }.flowOn(Dispatchers.IO)
