@@ -31,6 +31,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
@@ -38,6 +39,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.pamfinal.R
 import com.example.pamfinal.navigation.DestinasiNavigasi
@@ -61,31 +63,52 @@ fun LoginScreen(
     var emailText by remember { mutableStateOf("") }
     var passwordText by remember { mutableStateOf("") }
     val image = painterResource(id = R.drawable.loging)
-
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight(fraction = 0.30f), Alignment.TopCenter,
+    ){
+        Image(painter = painterResource(
+            id = R.drawable.loging),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .fillMaxSize()
+        )
+    }
     Column(
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxWidth()
+            .padding(horizontal = 50.dp),
+        verticalArrangement = Arrangement.Top,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ){
+        Spacer(modifier = Modifier.padding(50.dp))
+        Text(
+            text = "APLIKASI",
+            color = Color.Black,
+            fontFamily = FontFamily.SansSerif,
+            fontSize = 60.sp,
+            fontWeight = FontWeight.Bold,
+            modifier =  Modifier
+                .align(Alignment.CenterHorizontally)
+        )
+        Text(
+            text = "Pendaftaran Kartu BPJS",
+            color = Color.Black,
+            fontFamily = FontFamily.Serif,
+            fontSize =20.sp,
+            fontWeight = FontWeight.Bold
+        )
+    }
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight()
             .padding(horizontal = 50.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .fillMaxHeight(fraction = 0.30f), Alignment.TopCenter,
-        ){
-            Image(painter = painterResource(
-                id = R.drawable.bpjslg),
-                contentDescription = "Logo",
-                modifier = Modifier
-
-                    .size(250.dp)
-            )
-        }
-        Text(text = "APLIKASI PENDAFTARAN KARTU BPJS",
-            fontWeight = FontWeight.Bold,
-            fontStyle = FontStyle.Italic,)
-        Spacer(modifier = Modifier.padding(20.dp))
         OutlinedTextField(
             value = emailText,
             onValueChange = { emailText = it },
@@ -136,7 +159,7 @@ fun LoginScreen(
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(16.dp),
             colors = ButtonDefaults.buttonColors(
-                Color.Green
+                Color.Black
             )
         )
         {
