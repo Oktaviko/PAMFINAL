@@ -13,6 +13,7 @@ import com.example.pamfinal.ui.detail.DetailViewModelKartu
 
 import com.example.pamfinal.ui.detail.DetailViewModelPendaftar
 import com.example.pamfinal.ui.detail.DetailViewModelRumahSakit
+import com.example.pamfinal.ui.edit.EditViewModelKartu
 
 import com.example.pamfinal.ui.edit.EditViewModelPendaftar
 import com.example.pamfinal.ui.edit.EditViewModelRumahSakit
@@ -83,9 +84,9 @@ object PenyediaViewModel {
         }
 
         initializer {
-            EditViewModelRumahSakit(
+            EditViewModelKartu(
                 createSavedStateHandle(),
-                aplikasiBPJS().container.rumahsakitRepository
+                aplikasiBPJS().container.kartuRepository
             )
         }
     }
