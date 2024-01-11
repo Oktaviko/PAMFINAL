@@ -75,7 +75,7 @@ fun AddScreenPendaftar(
 @Composable
 fun EntryBodyP(
     addUIState: AddUIStatePendaftar,
-    onCustomerValueChange: KFunction1<AddEventPendaftar, Unit>,
+    onCustomerValueChange:(AddEventPendaftar) -> Unit,
     onSaveClick: () -> Unit,
     modifier: Modifier = Modifier
 ){

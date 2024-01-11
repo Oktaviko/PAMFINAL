@@ -77,7 +77,7 @@ fun AddScreenKartu(
 @Composable
 fun EntryBodyK(
     addUIState: AddUIStateKartuBpjs,
-    onKartuValueChange: KFunction1<AddEventKartuBpjs, Unit>,
+    onKartuValueChange: (AddEventKartuBpjs) -> Unit,
     onSaveClick: () -> Unit,
     modifier: Modifier = Modifier
 ){
