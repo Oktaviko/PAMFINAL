@@ -1,6 +1,7 @@
 package com.example.pamfinal.ui
 
 import android.widget.Toast
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
@@ -30,9 +32,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.pamfinal.R
 import com.example.pamfinal.navigation.DestinasiNavigasi
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -54,31 +58,33 @@ fun LoginScreen(
     var emailText by remember { mutableStateOf("") }
     var passwordText by remember { mutableStateOf("") }
 
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceBetween
-    ){
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .fillMaxHeight( fraction = 0.30f), Alignment.TopCenter,
-        ){
 
-        }
-    }
     Column(
         modifier = Modifier
-            .fillMaxWidth()
-            .fillMaxHeight()
+            .fillMaxSize()
             .padding(horizontal = 50.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight(fraction = 0.30f), Alignment.TopCenter,
+        ){
+            Image(painter = painterResource(
+                id = R.drawable.bpjslg),
+                contentDescription = "Logo",
+                modifier = Modifier
+
+                    .size(250.dp)
+            )
+        }
+        Text(text = "APLIKASI PENDAFTARAN KARTU BPJS")
+        Spacer(modifier = Modifier.padding(20.dp))
         OutlinedTextField(
             value = emailText,
             onValueChange = { emailText = it },
-            label = { Text(text = "Email") },
+            label = { Text(text = "Masukkan email anda") },
             singleLine = true,
             leadingIcon = {
                 IconButton(onClick = {}) {
@@ -94,7 +100,7 @@ fun LoginScreen(
         OutlinedTextField(
             value = passwordText,
             onValueChange = { passwordText = it },
-            label = { Text(text = "Password") },
+            label = { Text(text = "Masukkan password anda") },
             visualTransformation = PasswordVisualTransformation(),
             singleLine = true,
             leadingIcon = {
@@ -125,11 +131,11 @@ fun LoginScreen(
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(16.dp),
             colors = ButtonDefaults.buttonColors(
-                Color.Magenta
+                Color.Green
             )
         )
         {
-            Text(text = "Sign in")
+            Text(text = "Silahkan Masuk")
         }
         Spacer(modifier = Modifier.height(16.dp))
     }
