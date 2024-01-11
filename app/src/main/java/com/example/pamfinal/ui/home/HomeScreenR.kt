@@ -73,9 +73,9 @@ fun HomeScreenRumahSakit(
             }
         },
     ) { innerPadding ->
-        val uiStateSiswa by viewModel.homeUIStateR.collectAsState()
+        val uiStateRumahSakit by viewModel.homeUIStateR.collectAsState()
         BodyHomeRumahSakit(
-            itemRumahSakit = uiStateSiswa.listRumahSakit,
+            itemRumahSakit = uiStateRumahSakit.listRumahSakit,
             modifier = Modifier
                 .padding(innerPadding)
                 .fillMaxSize(),
