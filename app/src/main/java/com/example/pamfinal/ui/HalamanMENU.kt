@@ -10,11 +10,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.pamfinal.navigation.DestinasiNavigasi
 
@@ -29,7 +31,9 @@ onRumahSakitClick: () -> Unit,
 onKartuBPJSClick: () -> Unit,
 ) {
     Row (
-        modifier = Modifier.fillMaxWidth().padding(16.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
         horizontalArrangement = Arrangement.Center
     ){
         Text(text = "MENU", style = MaterialTheme.typography.titleLarge)
@@ -52,7 +56,10 @@ onKartuBPJSClick: () -> Unit,
                 onClick =  onPendaftarClick ,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(56.dp)
+                    .height(56.dp),
+                colors = ButtonDefaults.buttonColors(
+                    Color.Blue
+                )
             ) {
                 Text("DATA PENDAFTAR", style = MaterialTheme.typography.titleMedium)
             }
@@ -61,18 +68,24 @@ onKartuBPJSClick: () -> Unit,
                 onClick = onRumahSakitClick ,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(56.dp)
+                    .height(56.dp),
+                colors = ButtonDefaults.buttonColors(
+                    Color.Blue
+                )
             ) {
-                Text("DATA RUMAH_SAKIT", style = MaterialTheme.typography.titleMedium)
+                Text("DATA RUMAH SAKIT", style = MaterialTheme.typography.titleMedium)
             }
 
             Button(
                 onClick = onKartuBPJSClick,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(56.dp)
+                    .height(56.dp),
+                colors = ButtonDefaults.buttonColors(
+                    Color.Blue
+                )
             ) {
-                Text("KARTU_BPJS", style = MaterialTheme.typography.titleMedium)
+                Text("KARTU BPJS", style = MaterialTheme.typography.titleMedium)
             }
         }
     }
