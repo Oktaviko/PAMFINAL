@@ -12,6 +12,7 @@ import com.example.pamfinal.ui.DestinasiLogin
 import com.example.pamfinal.ui.DestinasiUtama
 import com.example.pamfinal.ui.HalamanUtama
 import com.example.pamfinal.ui.LoginScreen
+import com.example.pamfinal.ui.add.AddScreenKartu
 import com.example.pamfinal.ui.add.AddScreenPendaftar
 import com.example.pamfinal.ui.add.AddScreenRumahSakit
 import com.example.pamfinal.ui.add.DestinasiEntryK
@@ -169,8 +170,8 @@ fun PengelolaHalaman(navController: NavHostController = rememberNavController())
                     navigateBack = { navController.popBackStack() })
             }
         }
-        composable(DestinasiEntryP.route){
-            AddScreenPendaftar(navigateBack = {
+        composable(DestinasiEntryK.route){
+            AddScreenKartu(navigateBack = {
                 navController.popBackStack() }
             )
         }
