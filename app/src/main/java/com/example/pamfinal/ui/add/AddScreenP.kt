@@ -117,14 +117,6 @@ fun FormInputP(
             singleLine = true
         )
         OutlinedTextField(
-            value = addEvent.nik,
-            onValueChange = {onValueChange(addEvent.copy(nik = it))},
-            label ={Text("NIK")},
-            modifier = Modifier.fillMaxWidth(),
-            enabled = enabled,
-            singleLine = true
-        )
-        OutlinedTextField(
             value = addEvent.alamat,
             onValueChange = {onValueChange(addEvent.copy(alamat = it))},
             label ={Text("Alamat")},
