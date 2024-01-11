@@ -73,9 +73,9 @@ fun HomeScreenPendaftar(
             }
         },
     ) { innerPadding ->
-        val uiStateSiswa by viewModel.homeUIStateP.collectAsState()
+        val uiStatePendaftar by viewModel.homeUIStateP.collectAsState()
         BodyHomePendaftar(
-            itemPendaftar = uiStateSiswa.listPendaftar,
+            itemPendaftar = uiStatePendaftar.listPendaftar,
             modifier = Modifier
                 .padding(innerPadding)
                 .fillMaxSize(),

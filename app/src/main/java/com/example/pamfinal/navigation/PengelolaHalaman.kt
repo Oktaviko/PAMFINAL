@@ -8,8 +8,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.pamfinal.ui.DestinasiLogin
 import com.example.pamfinal.ui.DestinasiUtama
 import com.example.pamfinal.ui.HalamanUtama
+import com.example.pamfinal.ui.LoginScreen
 import com.example.pamfinal.ui.add.AddScreenPendaftar
 import com.example.pamfinal.ui.add.AddScreenRumahSakit
 import com.example.pamfinal.ui.add.DestinasiEntryP
@@ -33,9 +35,12 @@ import com.example.pamfinal.ui.home.HomeScreenRumahSakit
 fun PengelolaHalaman(navController: NavHostController = rememberNavController()) {
     NavHost(
         navController = navController,
-        startDestination = DestinasiUtama.route,
+        startDestination = DestinasiLogin.route,
         modifier = Modifier
     ){
+        composable(DestinasiLogin.route){
+            LoginScreen(navController)
+        }
         composable(DestinasiUtama.route){
             HalamanUtama(
                 onPendaftarClick = {navController.navigate(DestinasiHomePendaftar.route)},
