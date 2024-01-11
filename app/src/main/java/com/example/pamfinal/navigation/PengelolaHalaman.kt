@@ -51,7 +51,10 @@ fun PengelolaHalaman(navController: NavHostController = rememberNavController())
             HalamanUtama(
                 onPendaftarClick = {navController.navigate(DestinasiHomePendaftar.route)},
                 onRumahSakitClick = {navController.navigate(DestinasiHomeRumahSakit.route)},
-                onKartuBPJSClick = {navController.navigate(DestinasiHomeKartu.route)}
+                onKartuBPJSClick = {navController.navigate(DestinasiHomeKartu.route)},
+                navigateBack = {
+                    navController.popBackStack()
+                }
             )
         }
         composable(DestinasiHomePendaftar.route){

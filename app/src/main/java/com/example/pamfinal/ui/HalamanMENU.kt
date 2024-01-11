@@ -29,6 +29,7 @@ fun HalamanUtama(
 onPendaftarClick: () -> Unit,
 onRumahSakitClick: () -> Unit,
 onKartuBPJSClick: () -> Unit,
+navigateBack: () -> Unit,
 ) {
     Row (
         modifier = Modifier
