@@ -124,7 +124,7 @@ interface KartuRepository {
 class KartuRepositoryImpl(private val firestore: FirebaseFirestore) : KartuRepository {
     override fun getAll(): Flow<List<Kartu>> = flow {
         val snapshot = firestore.collection("Kartu")
-            .orderBy("nama", Query.Direction.ASCENDING)
+            .orderBy("id_rs", Query.Direction.ASCENDING)
             .get()
             .await()
         val kartu = snapshot.toObjects(Kartu::class.java)
