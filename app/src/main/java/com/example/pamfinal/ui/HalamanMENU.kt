@@ -26,6 +26,7 @@ object DestinasiUtama : DestinasiNavigasi {
 fun HalamanUtama(
 onPendaftarClick: () -> Unit,
 onRumahSakitClick: () -> Unit,
+onKartuBPJSClick: () -> Unit,
 ) {
     Row (
         modifier = Modifier.fillMaxWidth().padding(16.dp),
