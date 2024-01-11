@@ -114,14 +114,6 @@ fun FormInputP(
             singleLine = true
         )
         OutlinedTextField(
-            value = addEvent.id_rs,
-            onValueChange = {onValueChange(addEvent.copy(id_rs = it))},
-            label ={ Text("ID_RS") },
-            modifier = Modifier.fillMaxWidth(),
-            enabled = enabled,
-            singleLine = true
-        )
-        OutlinedTextField(
             value = addEvent.alamat_rs,
             onValueChange = {onValueChange(addEvent.copy(alamat_rs = it))},
             label ={ Text("Alamat Rumah Sakit") },
