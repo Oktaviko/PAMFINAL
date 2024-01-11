@@ -1,8 +1,10 @@
 Pendaftaran BPJS
 
 */Use Case/*
-![image](https://github.com/Oktaviko/PAMFINAL/assets/115150122/c6d70e51-d231-40ab-898e-1207256ddae6)
+![image](https://github.com/Oktaviko/PAMFINAL/assets/115150122/802dee44-e4b6-4930-973f-915382c86a08)
+
 Admin dapat Mengakses Halaman Home yang berisi 3 menu
+- Admin harus melakukan login sebelum menuju ke halaman Utama, dengan adanya firebase auth, ataua autentikasi login ini, tidak sembarang orang dapat melakukan login di aplikasi ini karena yang berhak adalah admin
 - Menu Pendaftar = Terdapat Create dan Read pada Hal 1 Pendaftar, jika klik salah satu dari List maka akan menuju pages Display Pendaftar dan terdapat update dan delete
 - Menu Rumah Sakit = Terdapat Create dan Read pada Hal 1 Rumah Sakit, jika klik salah satu dari List maka akan menuju pages Display Rumah Sakit dan terdapat update dan delete
 - Menu Display Kartu = Terdapat pilihan tambah pendaftar dan rumah sakit lalu submit akan menuju halaman Display kartu
