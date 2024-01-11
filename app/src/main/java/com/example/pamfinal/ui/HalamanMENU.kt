@@ -67,7 +67,7 @@ onKartuBPJSClick: () -> Unit,
             }
 
             Button(
-                onClick = { /* Handle button click */ },
+                onClick = onKartuBPJSClick,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(56.dp)
