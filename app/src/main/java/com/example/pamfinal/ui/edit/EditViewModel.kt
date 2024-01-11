@@ -6,16 +6,21 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.pamfinal.data.KartuRepository
 import com.example.pamfinal.data.PendaftarRepository
 import com.example.pamfinal.data.RumahSakitRepository
+import com.example.pamfinal.ui.AddEventKartuBpjs
 import com.example.pamfinal.ui.AddEventPendaftar
 import com.example.pamfinal.ui.AddEventRumahSakit
+import com.example.pamfinal.ui.AddUIStateKartuBpjs
 
 import com.example.pamfinal.ui.AddUIStatePendaftar
 import com.example.pamfinal.ui.AddUIStateRumahSakit
+import com.example.pamfinal.ui.toKartuBpjs
 
 import com.example.pamfinal.ui.toPendaftar
 import com.example.pamfinal.ui.toRumahSakit
+import com.example.pamfinal.ui.toUIStateKartuBpjs
 
 import com.example.pamfinal.ui.toUIStatePendaftar
 import com.example.pamfinal.ui.toUIStateRumahSakit
@@ -77,6 +82,34 @@ class EditViewModelRumahSakit (
 
     suspend fun updateRumahSakit(){
         repository.update(rumahsakitUiState.addEventRumahSakit.toRumahSakit())
+    }
+}
+class EditViewModelKartu (
+    savedStateHandle: SavedStateHandle,
+    private val repository: KartuRepository
+) : ViewModel(){
+
+    var kartuUiState by mutableStateOf(AddUIStateKartuBpjs())
+        private set
+
+    private val kartuId: String = checkNotNull(savedStateHandle[EditDestinationKartu.kartuId])
+
+    init{
+        viewModelScope.launch {
+            kartuUiState =
+                repository.getKartuById(kartuId)
+                    .filterNotNull()
+                    .first()
+                    .toUIStateKartuBpjs()
+        }
+    }
+
+    fun updateUIState(addEvent: AddEventKartuBpjs){
+        kartuUiState = kartuUiState.copy(addEventKartuBpjs = addEvent)
+    }
+
+    suspend fun updateKartu(){
+        repository.update(kartuUiState.addEventKartuBpjs.toKartuBpjs())
     }
 }
 

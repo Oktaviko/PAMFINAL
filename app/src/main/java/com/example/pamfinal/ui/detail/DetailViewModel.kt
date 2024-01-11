@@ -3,10 +3,13 @@ package com.example.pamfinal.ui.detail
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.pamfinal.data.KartuRepository
 import com.example.pamfinal.data.PendaftarRepository
 import com.example.pamfinal.data.RumahSakitRepository
+import com.example.pamfinal.ui.DetailUIStateKartuBpjs
 import com.example.pamfinal.ui.DetailUIStatePendaftar
 import com.example.pamfinal.ui.DetailUIStateRumahSakit
+import com.example.pamfinal.ui.toDetailKartu
 import com.example.pamfinal.ui.toDetailPendaftar
 import com.example.pamfinal.ui.toDetailRumahSakit
 import kotlinx.coroutines.flow.SharingStarted
@@ -63,6 +66,31 @@ class DetailViewModelRumahSakit (
 
     suspend fun deleteRumahSakit() {
         repository.delete(rumahsakitId)
+    }
+}
+class DetailViewModelKartu (
+    savedStateHandle: SavedStateHandle,
+    private val repository: KartuRepository
+) : ViewModel() {
+    companion object {
+        private const val TIMEOUT_MILIS = 5_000L
+    }
+
+    val kartuId: String = checkNotNull(savedStateHandle[DetailDestinationKartu.kartuId])
+
+    val uiStateK: StateFlow<DetailUIStateKartuBpjs> =
+        repository.getKartuById(kartuId)
+            .filterNotNull()
+            .map {
+                DetailUIStateKartuBpjs(addEventKartuBpjs = it.toDetailKartu())
+            }.stateIn(
+                scope = viewModelScope,
+                started = SharingStarted.WhileSubscribed(TIMEOUT_MILIS),
+                initialValue = DetailUIStateKartuBpjs()
+            )
+
+    suspend fun deleteKartu() {
+        repository.delete(kartuId)
     }
 }
 
