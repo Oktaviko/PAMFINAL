@@ -27,6 +27,7 @@ import com.example.pamfinal.ui.detail.DetailScreenRumahSakit
 import com.example.pamfinal.ui.edit.EditDestinationKartu
 import com.example.pamfinal.ui.edit.EditDestinationPendaftar
 import com.example.pamfinal.ui.edit.EditDestinationRumahSakit
+import com.example.pamfinal.ui.edit.EditScreenKartu
 import com.example.pamfinal.ui.edit.EditScreenPendaftar
 import com.example.pamfinal.ui.edit.EditScreenRumahSakit
 import com.example.pamfinal.ui.home.DestinasiHomeKartu
@@ -176,14 +177,14 @@ fun PengelolaHalaman(navController: NavHostController = rememberNavController())
             )
         }
         composable(
-            route = EditDestinationPendaftar.routeWithArgs,
-            arguments = listOf(navArgument(EditDestinationPendaftar.pendaftarId) {
+            route = EditDestinationKartu.routeWithArgs,
+            arguments = listOf(navArgument(EditDestinationKartu.kartuId) {
                 type = NavType.StringType
             })
         ) { backStackEntry ->
-            val pendaftarId = backStackEntry.arguments?.getString(EditDestinationPendaftar.pendaftarId)
-            pendaftarId?.let {
-                EditScreenPendaftar(
+            val kartuId = backStackEntry.arguments?.getString(EditDestinationKartu.kartuId)
+            kartuId?.let {
+                EditScreenKartu(
                     navigateBack = { navController.popBackStack() },
                     onNavigateUp = { navController.navigateUp() })
             }
