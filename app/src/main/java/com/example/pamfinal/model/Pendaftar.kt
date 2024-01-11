@@ -17,4 +17,13 @@ data class RumahSakit(
     constructor(): this("","","")
 }
 
+data class Kartu(
+    val id_kartu: String,
+    val Pendaftar: Pendaftar,
+    val RumahSakit: RumahSakit,
+    val masa_Aktif: String,
+){
+    constructor(): this("",Pendaftar(),RumahSakit(),"")
+}
+
 

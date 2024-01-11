@@ -79,7 +79,7 @@ fun HomeScreenRumahSakit(
             modifier = Modifier
                 .padding(innerPadding)
                 .fillMaxSize(),
-            onCustomerClick = onDetailClick
+            onRSClick = onDetailClick
         )
     }
 }
@@ -87,7 +87,7 @@ fun HomeScreenRumahSakit(
 fun BodyHomeRumahSakit(
     itemRumahSakit: List<RumahSakit>,
     modifier: Modifier = Modifier,
-    onCustomerClick: (String) -> Unit = {}
+    onRSClick: (String) -> Unit = {}
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -104,7 +104,7 @@ fun BodyHomeRumahSakit(
                 itemRumahSakit = itemRumahSakit,
                 modifier = Modifier
                     .padding(horizontal = 8.dp),
-                onItemClick = { onCustomerClick(it.id_rs) }
+                onItemClick = { onRSClick(it.id_rs) }
             )
         }
     }
