@@ -2,6 +2,7 @@ package com.example.pamfinal.ui
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -58,7 +59,13 @@ fun LoginScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween
     ){
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight( fraction = 0.30f), Alignment.TopCenter,
+        ){
 
+        }
     }
     Column(
         modifier = Modifier
