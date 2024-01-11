@@ -1,9 +1,12 @@
 package com.example.pamfinal.ui.detail
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -29,9 +32,12 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.pamfinal.R
 import com.example.pamfinal.model.Kartu
 import com.example.pamfinal.model.Pendaftar
 import com.example.pamfinal.navigation.DestinasiNavigasi
@@ -39,6 +45,7 @@ import com.example.pamfinal.ui.BPJSTopAppBar
 import com.example.pamfinal.ui.DetailUIStateKartuBpjs
 import com.example.pamfinal.ui.DetailUIStatePendaftar
 import com.example.pamfinal.ui.PenyediaViewModel
+import com.example.pamfinal.ui.add.EntryBodyK
 import com.example.pamfinal.ui.toKartuBpjs
 import com.example.pamfinal.ui.toPendaftar
 import kotlinx.coroutines.launch
@@ -80,19 +87,31 @@ fun DetailScreenKartu(
             }
         }, modifier = modifier
     ){innerPadding ->
-        ItemDetailsBodyK(
-            detailUIState = uiState.value,
-            onDelete = {
-                coroutineScope.launch {
-                    viewModel.deleteKartu()
-                    navigateBack()
-                }
-            },
+        Box(
             modifier = Modifier
+                .fillMaxSize()
                 .padding(innerPadding)
-                .verticalScroll(rememberScrollState())
-        )
-
+        ){
+            Image(painter = painterResource(
+                id = R.drawable.back3),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .fillMaxSize()
+            )
+            ItemDetailsBodyK(
+                detailUIState = uiState.value,
+                onDelete = {
+                    coroutineScope.launch {
+                        viewModel.deleteKartu()
+                        navigateBack()
+                    }
+                },
+                modifier = Modifier
+                    .padding(innerPadding)
+                    .verticalScroll(rememberScrollState())
+            )
+        }
     }
 }
 @Composable

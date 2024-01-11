@@ -1,5 +1,8 @@
 package com.example.pamfinal.ui.edit
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -9,12 +12,16 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.pamfinal.R
 import com.example.pamfinal.navigation.DestinasiNavigasi
 import com.example.pamfinal.ui.BPJSTopAppBar
 import com.example.pamfinal.ui.PenyediaViewModel
 import com.example.pamfinal.ui.add.EntryBodyP
 import com.example.pamfinal.ui.add.EntryBodyR
+import com.example.pamfinal.ui.home.BodyHomeRumahSakit
 import kotlinx.coroutines.launch
 
 object EditDestinationRumahSakit : DestinasiNavigasi {
@@ -43,20 +50,32 @@ fun EditScreenRumahSakit(
         },
         modifier = modifier
     ){innerPadding ->
-        EntryBodyR(
-            addUIState = viewModel.rumahsakitUiState,
-            onCustomerValueChange = viewModel::updateUIState,
-            onSaveClick = {
-                coroutineScope.launch {
-                    viewModel.updateRumahSakit()
-                    navigateBack()
-                }
-            },
+        Box(
             modifier = Modifier
+                .fillMaxSize()
                 .padding(innerPadding)
-                .verticalScroll(rememberScrollState())
-                .fillMaxWidth()
-        )
-
+        ){
+            Image(painter = painterResource(
+                id = R.drawable.timorrrrrrrrr),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .fillMaxSize()
+            )
+            EntryBodyR(
+                addUIState = viewModel.rumahsakitUiState,
+                onCustomerValueChange = viewModel::updateUIState,
+                onSaveClick = {
+                    coroutineScope.launch {
+                        viewModel.updateRumahSakit()
+                        navigateBack()
+                    }
+                },
+                modifier = Modifier
+                    .padding(innerPadding)
+                    .verticalScroll(rememberScrollState())
+                    .fillMaxWidth()
+            )
+        }
     }
 }

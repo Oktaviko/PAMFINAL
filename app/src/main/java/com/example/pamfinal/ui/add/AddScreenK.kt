@@ -1,7 +1,11 @@
 package com.example.pamfinal.ui.add
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -16,11 +20,15 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.pamfinal.R
 import com.example.pamfinal.navigation.DestinasiNavigasi
 import com.example.pamfinal.ui.AddEventKartuBpjs
 import com.example.pamfinal.ui.AddEventPendaftar
@@ -55,21 +63,33 @@ fun AddScreenKartu(
             )
         }
     ){innerPadding ->
-
-        EntryBodyK(
-            addUIState = addViewModel.addUIStateKartu,
-            onKartuValueChange = addViewModel::updateAddUIState,
-            onSaveClick = {
-                coroutineScope.launch {
-                    addViewModel.addKartu()
-                    navigateBack()
-                }
-            },
+        Box(
             modifier = Modifier
+                .fillMaxSize()
                 .padding(innerPadding)
-                .verticalScroll(rememberScrollState())
-                .fillMaxWidth()
-        )
+        ){
+            Image(painter = painterResource(
+                id = R.drawable.halaman),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .fillMaxSize()
+            )
+            EntryBodyK(
+                addUIState = addViewModel.addUIStateKartu,
+                onKartuValueChange = addViewModel::updateAddUIState,
+                onSaveClick = {
+                    coroutineScope.launch {
+                        addViewModel.addKartu()
+                        navigateBack()
+                    }
+                },
+                modifier = Modifier
+                    .padding(innerPadding)
+                    .verticalScroll(rememberScrollState())
+                    .fillMaxWidth()
+            )
+        }
     }
 
 }
