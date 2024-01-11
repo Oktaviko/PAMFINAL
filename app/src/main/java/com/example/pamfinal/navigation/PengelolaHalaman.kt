@@ -14,12 +14,16 @@ import com.example.pamfinal.ui.HalamanUtama
 import com.example.pamfinal.ui.LoginScreen
 import com.example.pamfinal.ui.add.AddScreenPendaftar
 import com.example.pamfinal.ui.add.AddScreenRumahSakit
+import com.example.pamfinal.ui.add.DestinasiEntryK
 import com.example.pamfinal.ui.add.DestinasiEntryP
 import com.example.pamfinal.ui.add.DestinasiEntryR
+import com.example.pamfinal.ui.detail.DetailDestinationKartu
 import com.example.pamfinal.ui.detail.DetailDestinationPendaftar
 import com.example.pamfinal.ui.detail.DetailDestinationRumahSakit
+import com.example.pamfinal.ui.detail.DetailScreenKartu
 import com.example.pamfinal.ui.detail.DetailScreenPendaftar
 import com.example.pamfinal.ui.detail.DetailScreenRumahSakit
+import com.example.pamfinal.ui.edit.EditDestinationKartu
 import com.example.pamfinal.ui.edit.EditDestinationPendaftar
 import com.example.pamfinal.ui.edit.EditDestinationRumahSakit
 import com.example.pamfinal.ui.edit.EditScreenPendaftar
@@ -139,7 +143,49 @@ fun PengelolaHalaman(navController: NavHostController = rememberNavController())
             }
         }
         composable(DestinasiHomeKartu.route){
-            HomeScreenKartu(navigateToItemEntry = { /*TODO*/ })
+            HomeScreenKartu(navigateToItemEntry = {
+                navController.navigate(DestinasiEntryK.route)
+            },
+                onDetailClick = {
+                        kartuId ->
+                    navController.navigate("${DetailDestinationKartu.route}/$kartuId")
+                    println("itemkartuId: $kartuId")
+                }
+            )
+        }
+        composable(
+            route = DetailDestinationKartu.routeWithArgs,
+            arguments = listOf(navArgument(DetailDestinationKartu.kartuId){
+                type = NavType.StringType
+            })
+        ){backStackEntry ->
+            val kartuId = backStackEntry.arguments?.getString(DetailDestinationKartu.kartuId)
+            kartuId?.let {
+                DetailScreenKartu(
+                    navigateToEditItem = {
+                        navController.navigate("${EditDestinationKartu.route}/$kartuId")
+                        println("itemkartuId: $kartuId")
+                    },
+                    navigateBack = { navController.popBackStack() })
+            }
+        }
+        composable(DestinasiEntryP.route){
+            AddScreenPendaftar(navigateBack = {
+                navController.popBackStack() }
+            )
+        }
+        composable(
+            route = EditDestinationPendaftar.routeWithArgs,
+            arguments = listOf(navArgument(EditDestinationPendaftar.pendaftarId) {
+                type = NavType.StringType
+            })
+        ) { backStackEntry ->
+            val pendaftarId = backStackEntry.arguments?.getString(EditDestinationPendaftar.pendaftarId)
+            pendaftarId?.let {
+                EditScreenPendaftar(
+                    navigateBack = { navController.popBackStack() },
+                    onNavigateUp = { navController.navigateUp() })
+            }
         }
     }
 }
