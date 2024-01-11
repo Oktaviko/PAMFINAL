@@ -2,6 +2,7 @@ package com.example.pamfinal.data
 
 import android.content.ContentValues
 import android.util.Log
+import com.example.pamfinal.model.Kartu
 import com.example.pamfinal.model.Pendaftar
 import com.example.pamfinal.model.RumahSakit
 import com.google.firebase.firestore.FirebaseFirestore
@@ -105,10 +106,59 @@ class RumahSakitRepositoryImpl(private val firestore: FirebaseFirestore) : Rumah
     override fun getRumahSakitById(rumahsakitId: String): Flow<RumahSakit> {
         return flow {
             val snapshot = firestore.collection("Pendaftar").document(rumahsakitId).get().await()
-            val pendaftar = snapshot.toObject(RumahSakit::class.java)
-            emit(pendaftar!!)
+            val rumahsakit = snapshot.toObject(RumahSakit::class.java)
+            emit(rumahsakit!!)
         }.flowOn(Dispatchers.IO)
     }
 
 }
 
+interface KartuRepository {
+    fun getAll(): Flow<List<Kartu>>
+    suspend fun save(kartu: Kartu): String
+    suspend fun update(kartu: Kartu)
+    suspend fun delete(kartuId: String)
+    fun getKartuById(kartuId: String): Flow<Kartu>
+}
+
+class KartuRepositoryImpl(private val firestore: FirebaseFirestore) : KartuRepository {
+    override fun getAll(): Flow<List<Kartu>> = flow {
+        val snapshot = firestore.collection("Kartu")
+            .orderBy("nama", Query.Direction.ASCENDING)
+            .get()
+            .await()
+        val kartu = snapshot.toObjects(Kartu::class.java)
+        emit(kartu)
+    }.flowOn(Dispatchers.IO)
+
+
+    override suspend fun save(kartu: Kartu): String {
+        return try {
+            val documentReference = firestore.collection("Kartu").add(kartu).await()
+            // Update the Pendaftar with the Firestore-generated DocumentReference
+            firestore.collection("Kartu").document(documentReference.id)
+                .set(kartu.copy(id_kartu = documentReference.id))
+            "Berhasil + ${documentReference.id}"
+        } catch (e: Exception) {
+            Log.w(ContentValues.TAG, "Error adding document", e)
+            "Gagal $e"
+        }
+    }
+
+    override suspend fun update(kartu: Kartu) {
+        firestore.collection("Kartu").document(kartu.id_kartu).set(kartu).await()
+    }
+
+    override suspend fun delete(kartuId: String) {
+        firestore.collection("Kartu").document(kartuId).delete().await()
+    }
+
+    override fun getKartuById(kartuId: String): Flow<Kartu> {
+        return flow {
+            val snapshot = firestore.collection("Kartu").document(kartuId).get().await()
+            val kartu = snapshot.toObject(Kartu::class.java)
+            emit(kartu!!)
+        }.flowOn(Dispatchers.IO)
+    }
+
+}
