@@ -52,7 +52,7 @@ class AddViewModelKartu(private val kartuRepository: KartuRepository) : ViewMode
         addUIStateKartu = AddUIStateKartuBpjs(addEventKartuBpjs = addEvent)
     }
 
-    suspend fun addKart(){
+    suspend fun addKartu(){
         kartuRepository.save(addUIStateKartu.addEventKartuBpjs.toKartuBpjs())
     }
 }
