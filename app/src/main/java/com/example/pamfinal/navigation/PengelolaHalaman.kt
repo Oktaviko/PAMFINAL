@@ -100,7 +100,7 @@ fun PengelolaHalaman(navController: NavHostController = rememberNavController())
                 onDetailClick = {
                         rumahsakitId ->
                     navController.navigate("${DetailDestinationRumahSakit.route}/$rumahsakitId")
-                    println("itemId: $rumahsakitId")
+                    println("itemrumahsakitId: $rumahsakitId")
                 }
             )
         }
@@ -115,7 +115,7 @@ fun PengelolaHalaman(navController: NavHostController = rememberNavController())
                 DetailScreenRumahSakit(
                     navigateToEditItem = {
                         navController.navigate("${EditDestinationRumahSakit.route}/$rumahsakitId")
-                        println("itemId: $rumahsakitId")
+                        println("itemrumahsakitId: $rumahsakitId")
                     },
                     navigateBack = { navController.popBackStack() })
             }
