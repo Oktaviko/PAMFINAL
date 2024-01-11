@@ -22,7 +22,7 @@ import com.example.pamfinal.navigation.DestinasiNavigasi
 
 object DestinasiUtama : DestinasiNavigasi {
     override val route = "menu"
-    override val titleRes = "MENU"
+    override val titleRes = "PILIHAN MENU"
 }
 @Composable
 fun HalamanUtama(
