@@ -22,8 +22,10 @@ import com.example.pamfinal.ui.edit.EditDestinationPendaftar
 import com.example.pamfinal.ui.edit.EditDestinationRumahSakit
 import com.example.pamfinal.ui.edit.EditScreenPendaftar
 import com.example.pamfinal.ui.edit.EditScreenRumahSakit
+import com.example.pamfinal.ui.home.DestinasiHomeKartu
 import com.example.pamfinal.ui.home.DestinasiHomePendaftar
 import com.example.pamfinal.ui.home.DestinasiHomeRumahSakit
+import com.example.pamfinal.ui.home.HomeScreenKartu
 import com.example.pamfinal.ui.home.HomeScreenPendaftar
 import com.example.pamfinal.ui.home.HomeScreenRumahSakit
 
@@ -37,7 +39,8 @@ fun PengelolaHalaman(navController: NavHostController = rememberNavController())
         composable(DestinasiUtama.route){
             HalamanUtama(
                 onPendaftarClick = {navController.navigate(DestinasiHomePendaftar.route)},
-                onRumahSakitClick = {navController.navigate(DestinasiHomeRumahSakit.route)}
+                onRumahSakitClick = {navController.navigate(DestinasiHomeRumahSakit.route)},
+                onKartuBPJSClick = {navController.navigate(DestinasiHomeKartu.route)}
             )
         }
         composable(DestinasiHomePendaftar.route){
@@ -129,6 +132,9 @@ fun PengelolaHalaman(navController: NavHostController = rememberNavController())
                     navigateBack = { navController.popBackStack() },
                     onNavigateUp = { navController.navigateUp() })
             }
+        }
+        composable(DestinasiHomeKartu.route){
+            HomeScreenKartu(navigateToItemEntry = { /*TODO*/ })
         }
     }
 }
