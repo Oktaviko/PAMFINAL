@@ -102,6 +102,6 @@ data class HomeUIStateRumahSakit(
     val dataLength: Int = 0
 )
 data class HomeUIStateKartu(
-    val listPendaftar: List<Kartu> = listOf(),
+    val listKartu: List<Kartu> = listOf(),
     val dataLength: Int = 0
 )

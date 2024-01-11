@@ -2,10 +2,13 @@ package com.example.pamfinal.ui.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.pamfinal.data.KartuRepository
 import com.example.pamfinal.data.PendaftarRepository
 import com.example.pamfinal.data.RumahSakitRepository
+import com.example.pamfinal.model.Kartu
 import com.example.pamfinal.model.Pendaftar
 import com.example.pamfinal.model.RumahSakit
+import com.example.pamfinal.ui.HomeUIStateKartu
 import com.example.pamfinal.ui.HomeUIStatePendaftar
 import com.example.pamfinal.ui.HomeUIStateRumahSakit
 import kotlinx.coroutines.flow.Flow
@@ -65,3 +68,27 @@ class HomeViewModelRumahSakit(private val rumahsakitRepository: RumahSakitReposi
         )
 }
 
+sealed class KartuUIState {
+    data class Success(val kartu: Flow<List<Kartu>>) : KartuUIState()
+    object Error : KartuUIState()
+    object Loading : KartuUIState()
+}
+
+class HomeViewModelKartu(private val kartuRepository: KartuRepository) : ViewModel(){
+
+    companion object{
+        private const val TIMEOUT_MILLIS = 5_000L
+    }
+    val homeUIStateK: StateFlow<HomeUIStateKartu> = kartuRepository.getAll()
+        .filterNotNull()
+        .map {
+            HomeUIStateKartu(
+                listKartu = it.toList(),
+                it.size)
+        }
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(TIMEOUT_MILLIS),
+            initialValue = HomeUIStateKartu()
+        )
+}
