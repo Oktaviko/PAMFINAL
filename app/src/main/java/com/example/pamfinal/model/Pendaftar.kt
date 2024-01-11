@@ -19,11 +19,11 @@ data class RumahSakit(
 
 data class Kartu(
     val id_kartu: String,
-    val Pendaftar: Pendaftar,
-    val RumahSakit: RumahSakit,
+    val pendaftar: String,
+    val rumahSakit: String,
     val masa_Aktif: String,
 ){
-    constructor(): this("",Pendaftar(),RumahSakit(),"")
+    constructor(): this("","","","")
 }
 
 
