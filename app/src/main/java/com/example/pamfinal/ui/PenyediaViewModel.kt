@@ -9,6 +9,7 @@ import com.example.pamfinal.BPJSApplication
 import com.example.pamfinal.ui.add.AddViewModelKartu
 import com.example.pamfinal.ui.add.AddViewModelPendaftar
 import com.example.pamfinal.ui.add.AddViewModelRumahSakit
+import com.example.pamfinal.ui.detail.DetailViewModelKartu
 
 import com.example.pamfinal.ui.detail.DetailViewModelPendaftar
 import com.example.pamfinal.ui.detail.DetailViewModelRumahSakit
@@ -75,9 +76,9 @@ object PenyediaViewModel {
             AddViewModelKartu(aplikasiBPJS().container.kartuRepository)
         }
         initializer {
-            DetailViewModelRumahSakit(
+            DetailViewModelKartu(
                 createSavedStateHandle(),
-                aplikasiBPJS().container.rumahsakitRepository
+                aplikasiBPJS().container.kartuRepository
             )
         }
 
