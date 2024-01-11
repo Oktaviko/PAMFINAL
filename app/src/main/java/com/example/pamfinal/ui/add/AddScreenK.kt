@@ -111,14 +111,6 @@ fun FormInputK(
         verticalArrangement = Arrangement.spacedBy(15.dp)
     ) {
         OutlinedTextField(
-            value = addEvent.id_kartu,
-            onValueChange = { onValueChange(addEvent.copy(id_kartu = it)) },
-            label = { Text("id_kartu") },
-            modifier = Modifier.fillMaxWidth(),
-            enabled = enabled,
-            singleLine = true
-        )
-        OutlinedTextField(
             value = addEvent.pendaftar,
             onValueChange = { onValueChange(addEvent.copy(pendaftar = it)) },
             label = { Text("Nama Pendaftar") },
