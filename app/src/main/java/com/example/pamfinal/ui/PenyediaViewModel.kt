@@ -6,6 +6,7 @@ import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.pamfinal.BPJSApplication
+import com.example.pamfinal.ui.add.AddViewModelKartu
 import com.example.pamfinal.ui.add.AddViewModelPendaftar
 import com.example.pamfinal.ui.add.AddViewModelRumahSakit
 
@@ -69,6 +70,22 @@ object PenyediaViewModel {
 
         initializer {
             HomeViewModelKartu(aplikasiBPJS().container.kartuRepository)
+        }
+        initializer {
+            AddViewModelKartu(aplikasiBPJS().container.kartuRepository)
+        }
+        initializer {
+            DetailViewModelRumahSakit(
+                createSavedStateHandle(),
+                aplikasiBPJS().container.rumahsakitRepository
+            )
+        }
+
+        initializer {
+            EditViewModelRumahSakit(
+                createSavedStateHandle(),
+                aplikasiBPJS().container.rumahsakitRepository
+            )
         }
     }
 }
