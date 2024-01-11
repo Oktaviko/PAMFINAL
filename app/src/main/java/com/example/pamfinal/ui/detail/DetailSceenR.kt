@@ -43,7 +43,7 @@ import kotlinx.coroutines.launch
 object DetailDestinationRumahSakit : DestinasiNavigasi {
     override val route = "item_details_rumahsakit"
     override val titleRes = "Detail Rumah Sakit"
-    const val rumahsakitId = "itemId"
+    const val rumahsakitId = "itemrumahsakitId"
     val routeWithArgs = "$route/{$rumahsakitId}"
 }
 @OptIn(ExperimentalMaterial3Api::class)
